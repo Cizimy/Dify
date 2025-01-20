@@ -1,0 +1,69 @@
+app:
+  description: ''
+  icon: 🔧
+  icon_background: '#EFF1F5'
+  mode: chat
+  name: Python bug fixer
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      frequency_penalty: 0
+      max_tokens: 512
+      presence_penalty: 0
+      stop: []
+      temperature: 0
+      top_p: 1
+    mode: chat
+    name: gpt-3.5-turbo
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: Your task is to analyze the provided Python code snippet, identify any
+    bugs or errors present, and provide a corrected version of the code that resolves
+    these issues. Explain the problems you found in the original code and how your
+    fixes address them. The corrected code should be functional, efficient, and adhere
+    to best practices in Python programming.
+  prompt_type: simple
+  retriever_resource:
+    enabled: false
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.1.5

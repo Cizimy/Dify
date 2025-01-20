@@ -1,0 +1,780 @@
+app:
+  description: ''
+  icon: 📝
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Personalized Memory Assistant
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables:
+  - description: ''
+    id: bacbfac5-a1da-420e-a022-7f90d554da80
+    name: memory
+    selector:
+    - conversation
+    - memory
+    value: []
+    value_type: array[object]
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1723433389887-source-1723439627061-target
+      selected: false
+      source: '1723433389887'
+      sourceHandle: source
+      target: '1723439627061'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1723439627061-source-1723440384014-target
+      selected: false
+      source: '1723439627061'
+      sourceHandle: source
+      target: '1723440384014'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1723440384014-true-1723440416057-target
+      selected: false
+      source: '1723440384014'
+      sourceHandle: 'true'
+      target: '1723440416057'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1723440416057-source-1723441002334-target
+      selected: false
+      source: '1723440416057'
+      sourceHandle: source
+      target: '1723441002334'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: assigner
+      id: 1723441002334-source-1723440950024-target
+      selected: false
+      source: '1723441002334'
+      sourceHandle: source
+      target: '1723440950024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1723442720119-source-answer-target
+      selected: false
+      source: '1723442720119'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 17234428530880-source-17234428657830-target
+      selected: false
+      source: '17234428530880'
+      sourceHandle: source
+      target: '17234428657830'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: code
+      id: 1723440384014-false-1723443740666-target
+      selected: false
+      source: '1723440384014'
+      sourceHandle: 'false'
+      target: '1723443740666'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1723443740666-source-17234428530880-target
+      selected: false
+      source: '1723443740666'
+      sourceHandle: source
+      target: '17234428530880'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: assigner
+        targetType: code
+      id: 1723440950024-source-1723444029520-target
+      selected: false
+      source: '1723440950024'
+      sourceHandle: source
+      target: '1723444029520'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1723444029520-source-1723442720119-target
+      selected: false
+      source: '1723444029520'
+      sourceHandle: source
+      target: '1723442720119'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1723433389887'
+      position:
+        x: 30
+        y: 266
+      positionAbsolute:
+        x: 30
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1723442720119.text#}}'
+        desc: ''
+        selected: false
+        title: Answer（2）
+        type: answer
+        variables: []
+      height: 107
+      id: answer
+      position:
+        x: 2462
+        y: 266
+      positionAbsolute:
+        x: 2462
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 4447a6dc-5818-47ff-9b4d-a64792e4e8dc
+          role: system
+          text: "Determine if there is information in {{#sys.query#}} that needs to\
+            \ be stored as memory.\nThe definition of memory：Deduce the facts, preferences,\
+            \ and memories from the provided text. Constraint for deducing facts,\
+            \ preferences, and memories: - The facts, preferences, and memories should\
+            \ be concise and informative. - Don't start by \"The person likes Pizza\"\
+            . Instead, start with \"Likes Pizza\". - Don't remember the user/agent\
+            \ details provided. Only remember the facts, preferences, and memories.\
+            \  \noutput：\noutput Yes or No in a word"
+        selected: false
+        title: Determine whether to store as memory.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1723439627061'
+      position:
+        x: 334
+        y: 266
+      positionAbsolute:
+        x: 334
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: ce01e29b-8afa-42c9-9cd0-16aa9c3dc06e
+            value: 'Yes'
+            varType: string
+            variable_selector:
+            - '1723439627061'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: Conditional branching
+        type: if-else
+      height: 126
+      id: '1723440384014'
+      position:
+        x: 638
+        y: 266
+      positionAbsolute:
+        x: 638
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: c99691e0-c192-4f14-8caa-3ea897c01bea
+          role: system
+          text: "\"\"\"\nDeduce the facts, preferences, and memories from {{#sys.query#}}\n\
+            Just return the facts, preferences, and memories in bullet points:\nNatural\
+            \ language text: {user_input}\nUser/Agent details: {metadata}\n\nConstraint\
+            \ for deducing facts, preferences, and memories:\n- The facts, preferences,\
+            \ and memories should be concise and informative.\n- Don't start by \"\
+            The person likes Pizza\". Instead, start with \"Likes Pizza\".\n- Don't\
+            \ remember the user/agent details provided. Only remember the facts, preferences,\
+            \ and memories.\n\nDeduced facts, preferences, and memories:\noutput format\
+            \ example：\n{\n  \"memory\": {\n    \"facts\": [\n      \"Two individuals:\
+            \ Ray and Lily\",\n      \"Ray is 20 years old\",\n      \"Lily is 18\
+            \ years old\",\n      \"Lily's name includes Chinese characters '利利'\"\
+            \n    ],\n    \"preferences\": [],\n    \"memories\": []\n  }\n}\n\"\"\
+            \""
+        selected: false
+        title: Extract memory
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1723440416057'
+      position:
+        x: 942
+        y: 266
+      positionAbsolute:
+        x: 942
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        assigned_variable_selector:
+        - conversation
+        - memory
+        desc: ''
+        input_variable_selector:
+        - '1723441002334'
+        - mem
+        selected: false
+        title: Variable assignment
+        type: assigner
+        write_mode: append
+      height: 132
+      id: '1723440950024'
+      position:
+        x: 1550
+        y: 266
+      positionAbsolute:
+        x: 1550
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(arg1: str) -> object:\n    try:\n        #\
+          \ Parse the input JSON string\n        input_data = json.loads(arg1)\n \
+          \       \n        # Extract the memory object\n        memory = input_data.get(\"\
+          memory\", {})\n        \n        # Construct the return object\n       \
+          \ result = {\n            \"facts\": memory.get(\"facts\", []),\n      \
+          \      \"preferences\": memory.get(\"preferences\", []),\n            \"\
+          memories\": memory.get(\"memories\", [])\n        }\n        \n        return\
+          \ {\n            \"mem\": result\n        }\n    except json.JSONDecodeError:\n\
+          \        return {\n            \"result\": \"Error: Invalid JSON string\"\
+          \n        }\n    except Exception as e:\n        return {\n            \"\
+          result\": f\"Error: {str(e)}\"\n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          mem:
+            children: null
+            type: object
+        selected: false
+        title: Escape the string to an object.
+        type: code
+        variables:
+        - value_selector:
+          - '1723440416057'
+          - text
+          variable: arg1
+      height: 54
+      id: '1723441002334'
+      position:
+        x: 1246
+        y: 266
+      positionAbsolute:
+        x: 1246
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: c162dbfd-5159-4df9-9e06-9d638522c6be
+          role: system
+          text: "You are an expert at answering {{#sys.query#}} based on the provided\
+            \ memories. Your task is to provide accurate and concise answers to the\
+            \ questions by leveraging the information given in {{#1723444029520.result#}}\
+            \ Guidelines: - Extract relevant information from the memories based on\
+            \ the question. - If no relevant information is found, make sure you don't\
+            \ say no information is found. Instead, accept the question and provide\
+            \ a general response. - Ensure that the answers are clear, concise, and\
+            \ directly address the question.  \nEnsure that the language of the response\
+            \ is consistent with {{#sys.query#}}."
+        selected: false
+        title: respond（2）
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1723442720119'
+      position:
+        x: 2158
+        y: 266
+      positionAbsolute:
+        x: 2158
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: c162dbfd-5159-4df9-9e06-9d638522c6be
+          role: system
+          text: "You are an expert at answering {{#sys.query#}} based on the provided\
+            \ memories. Your task is to provide accurate and concise answers to the\
+            \ questions by leveraging the information given in{{#1723443740666.result#}}\
+            \ Guidelines: - Extract relevant information from the memories based on\
+            \ the question. - If no relevant information is found, make sure you don't\
+            \ say no information is found. Instead, accept the question and provide\
+            \ a general response. - Ensure that the answers are clear, concise, and\
+            \ directly address the question.  \nEnsure that the language of the response\
+            \ is consistent with {{#sys.query#}}."
+        selected: false
+        title: respond (1)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '17234428530880'
+      position:
+        x: 1246
+        y: 403.5
+      positionAbsolute:
+        x: 1246
+        y: 403.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17234428530880.text#}}'
+        desc: ''
+        selected: false
+        title: Answer (1)
+        type: answer
+        variables: []
+      height: 107
+      id: '17234428657830'
+      position:
+        x: 1550
+        y: 438
+      positionAbsolute:
+        x: 1550
+        y: 438
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(arg1: list) -> str:\n    try:\n        # Assume\
+          \ arg1[0] is the dictionary we need to process\n        context = arg1[0]\
+          \ if arg1 else {}\n        \n        # Construct the memory object\n   \
+          \     memory = {\"memory\": context}\n        \n        # Convert the object\
+          \ to a JSON string\n        json_str = json.dumps(memory, ensure_ascii=False,\
+          \ indent=2)\n        \n        # Wrap the JSON string in <answer> tags\n\
+          \        result = f\"<answer>{json_str}</answer>\"\n        \n        return\
+          \ {\n            \"result\": result\n        }\n    except Exception as\
+          \ e:\n        return {\n            \"result\": f\"<answer>Error: {str(e)}</answer>\"\
+          \n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Escape the object as a string.
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - memory
+          variable: arg1
+      height: 54
+      id: '1723443740666'
+      position:
+        x: 942
+        y: 447.5
+      positionAbsolute:
+        x: 942
+        y: 447.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(arg1: list) -> str:\n    try:\n        # Assume\
+          \ arg1[0] is the dictionary we need to process\n        context = arg1[0]\
+          \ if arg1 else {}\n        \n        # Construct the memory object\n   \
+          \     memory = {\"memory\": context}\n        \n        # Convert the object\
+          \ to a JSON string\n        json_str = json.dumps(memory, ensure_ascii=False,\
+          \ indent=2)\n        \n        # Wrap the JSON string in <answer> tags\n\
+          \        result = f\"<answer>{json_str}</answer>\"\n        \n        return\
+          \ {\n            \"result\": result\n        }\n    except Exception as\
+          \ e:\n        return {\n            \"result\": f\"<answer>Error: {str(e)}</answer>\"\
+          \n        }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Escape the object as a string.
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - memory
+          variable: arg1
+      height: 54
+      id: '1723444029520'
+      position:
+        x: 1854
+        y: 266
+      positionAbsolute:
+        x: 1854
+        y: 266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 184
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          chatflow template is designed to introduce users to the use of arrays in
+          conversation variables and the method of variable assignment through appending,
+          inspired by OpenAI''s memory.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 297
+      height: 184
+      id: '1723533992122'
+      position:
+        x: 309.13735192871036
+        y: -57.498059908562624
+      positionAbsolute:
+        x: 309.13735192871036
+        y: -57.498059908562624
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 297
+    - data:
+        author: Dify
+        desc: ''
+        height: 198
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Let
+          the large model determine whether there are any facts, preferences, or memories
+          in the user''s query that need to be remembered. If so, follow the upper
+          branch to extract and store them first, then respond using this as context
+          for the conversation.","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"If
+          not, proceed down the lower branch and directly use previous relevant memories
+          to answer.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ' (1)'
+        type: ''
+        width: 317
+      height: 198
+      id: '17235340443870'
+      position:
+        x: 630.6124919776112
+        y: -57.498059908562624
+      positionAbsolute:
+        x: 630.6124919776112
+        y: -57.498059908562624
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 317
+    - data:
+        author: Dify
+        desc: ''
+        height: 210
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Here
+          we used the open-source prompt from mem0ai: https://github.com/mem0ai/mem0/blob/main/mem0/configs/prompts.py
+          to extract and retrieve memories. We believe that memory consists of three
+          parts: deduced facts, preferences, and memories, so we use array[object]
+          to store session-level variables.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 300
+      height: 210
+      id: '1723534367935'
+      position:
+        x: 972.6617137949995
+        y: -62.44700316044512
+      positionAbsolute:
+        x: 972.6617137949995
+        y: -62.44700316044512
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 300
+    - data:
+        author: Dify
+        desc: ''
+        height: 184
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"First,
+          because we chose the array[object] type as the data type for session variables,
+          we need to escape the model''s output text string before using it. When
+          using conversation variables , we need to insert it into the prompt of the
+          LLM node, so it needs to be converted to a string type.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ' (1)'
+        type: ''
+        width: 297
+      height: 184
+      id: '17235347344010'
+      position:
+        x: 1302.1215339024086
+        y: -57.498059908562624
+      positionAbsolute:
+        x: 1302.1215339024086
+        y: -57.498059908562624
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 297
+    - data:
+        author: Dify
+        desc: ''
+        height: 267
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"When
+          responding to queries, we require the node to answer based on relevant memories.
+          If the memory is not related, it should provide a general response: ","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"You
+          are an expert answering based on the provided memories. Your task is to
+          use the given information to provide accurate and concise answers to questions.
+          Guidelines: - Extract relevant information from memory based on the question.
+          - If no relevant information is found, ensure that you do not say that no
+          information was found. Instead, acknowledge the question and provide a general
+          response. - Ensure that answers are clear, concise, and directly address
+          the question. Make sure that the language of your response remains consistent
+          with this approach.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 443
+      height: 267
+      id: '17235349280770'
+      position:
+        x: 1638.7289997188407
+        y: -57.498059908562624
+      positionAbsolute:
+        x: 1638.7289997188407
+        y: -57.498059908562624
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 443
+    - data:
+        author: Dify
+        desc: ''
+        height: 207
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"When
+          we use memory, we directly insert it into the model''s context. At the same
+          time, session-level variables are not stored as vectors in the vector database
+          for semantic retrieval before subsequent Q&A. In real scenarios, more branching
+          logic is needed to update and maintain memory. Additionally, when the total
+          amount of memory exceeds the model''s context, RAG is used to allow LLMs
+          to respond with the most relevant memories. In summary, this is a very simple
+          case, and I look forward to seeing more uses of conversation variables from
+          the community!","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: yellow
+        title: '  (2)'
+        type: ''
+        width: 335
+      height: 207
+      id: '17235350709980'
+      position:
+        x: 2124.0245295585805
+        y: -57.498059908562624
+      positionAbsolute:
+        x: 2124.0245295585805
+        y: -57.498059908562624
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 335
+    viewport:
+      x: 15.962029815194342
+      y: 302.73143396818216
+      zoom: 0.5468574210275464

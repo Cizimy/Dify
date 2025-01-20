@@ -1,0 +1,615 @@
+app:
+  description: ''
+  icon: 📈
+  icon_background: '#D3F8DF'
+  mode: workflow
+  name: Stock news sentiment analysis (parallel run within iteration)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: tool
+        targetType: code
+      id: 1713262010863-1713262060182
+      selected: false
+      source: '1713262010863'
+      sourceHandle: source
+      target: '1713262060182'
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1713262060182-source-1716911333343-target
+      selected: false
+      source: '1713262060182'
+      sourceHandle: source
+      target: '1716911333343'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1716911333343-source-1720759755103-target
+      selected: false
+      source: '1716911333343'
+      sourceHandle: source
+      target: '1720759755103'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1716911333343'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1716911333343start0-source-1720758285748-target
+      selected: false
+      source: 1716911333343start0
+      sourceHandle: source
+      target: '1720758285748'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1716911333343'
+        sourceType: tool
+        targetType: parameter-extractor
+      id: 1720758285748-source-1724987616662-target
+      source: '1720758285748'
+      sourceHandle: source
+      target: '1724987616662'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1716911333343'
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1724987616662-source-1724988766566-target
+      source: '1724987616662'
+      sourceHandle: source
+      target: '1724988766566'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1716911333343'
+        sourceType: parameter-extractor
+        targetType: llm
+      id: 1724987616662-source-1724988773806-target
+      source: '1724987616662'
+      sourceHandle: source
+      target: '1724988773806'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1716911333343'
+        sourceType: llm
+        targetType: template-transform
+      id: 1724988766566-source-1720758555344-target
+      source: '1724988766566'
+      sourceHandle: source
+      target: '1720758555344'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1716911333343'
+        sourceType: llm
+        targetType: template-transform
+      id: 1724988773806-source-1720758555344-target
+      source: '1724988773806'
+      sourceHandle: source
+      target: '1720758555344'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: template-transform
+      id: 1720759755103-source-1724991999136-target
+      source: '1720759755103'
+      sourceHandle: source
+      target: '1724991999136'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1724991999136-source-1713262577750-target
+      source: '1724991999136'
+      sourceHandle: source
+      target: '1713262577750'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1713261835258-source-1713262010863-target
+      source: '1713261835258'
+      sourceHandle: source
+      target: '1713262010863'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: 'Stock code eg: nvda news'
+          max_length: 148
+          options: []
+          required: true
+          type: text-input
+          variable: stock_code
+      height: 90
+      id: '1713261835258'
+      position:
+        x: 234.55110443810747
+        y: 424
+      positionAbsolute:
+        x: 234.55110443810747
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: 0
+          include_domains: null
+          include_images: 0
+          include_raw_content: 0
+          max_results: 4
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1713261835258.stock_code#}}'
+        type: tool
+      height: 246
+      id: '1713262010863'
+      position:
+        x: 634
+        y: 424
+      positionAbsolute:
+        x: 634
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\nimport time\ndef main(arg1) -> dict:\n    time.sleep(13)\n\
+          \    urls = re.findall(r'http[s]?://[^\\s)]+', arg1)\n    return {\n   \
+          \     \"result\": urls,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1713262010863'
+          - text
+          variable: arg1
+      height: 54
+      id: '1713262060182'
+      position:
+        x: 938
+        y: 424
+      positionAbsolute:
+        x: 938
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1724991999136'
+          - output
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 90
+      id: '1713262577750'
+      position:
+        x: 3495
+        y: 424
+      positionAbsolute:
+        x: 3495
+        y: 424
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        height: 447.738322573574
+        iterator_selector:
+        - '1713262060182'
+        - result
+        output_selector:
+        - '1720758555344'
+        - output
+        output_type: array[string]
+        selected: false
+        startNodeType: tool
+        start_node_id: 1716911333343start0
+        title: Parameter Extractor
+        type: iteration
+        width: 1585
+      height: 448
+      id: '1716911333343'
+      position:
+        x: 1242
+        y: 424
+      positionAbsolute:
+        x: 1242
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1585
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        isIterationStart: true
+        iteration_id: '1716911333343'
+        provider_id: jina
+        provider_name: jina
+        provider_type: builtin
+        selected: false
+        title: JinaReader
+        tool_configurations:
+          gather_all_images_at_the_end: 0
+          gather_all_links_at_the_end: 0
+          image_caption: 0
+          no_cache: 0
+          proxy_server: null
+          summary: 0
+          target_selector: null
+          wait_for_selector: null
+        tool_label: JinaReader
+        tool_name: jina_reader
+        tool_parameters:
+          url:
+            type: mixed
+            value: '{{#1716911333343.item#}}'
+        type: tool
+      extent: parent
+      height: 272
+      id: '1720758285748'
+      parentId: '1716911333343'
+      position:
+        x: 117
+        y: 85
+      positionAbsolute:
+        x: 1359
+        y: 509
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1001
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1716911333343'
+        selected: false
+        template: '{{ optimism }}\SP{{ pesimistic }}\SP{{ arg1 }}
+
+
+          '
+        title: Combine URL and Summary
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1716911333343'
+          - item
+          variable: arg1
+        - value_selector:
+          - '1724988766566'
+          - text
+          variable: optimism
+        - value_selector:
+          - '1724988773806'
+          - text
+          variable: pesimistic
+      extent: parent
+      height: 54
+      id: '1720758555344'
+      parentId: '1716911333343'
+      position:
+        x: 1143.929179810375
+        y: 82.89452534663224
+      positionAbsolute:
+        x: 2385.929179810375
+        y: 506.89452534663224
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import time\n\ndef main(arg1) -> dict:\n    time.sleep(13)  \n    result\
+          \ = []\n    \n    for item in arg1:\n        # Split the string by \\SP\
+          \ and extract optimism, pessimistic, and arg1_value separately.\n      \
+          \  optimism, pessimistic, arg1_value = item.split('\\\\SP')\n        \n\
+          \        # Replace the line breaks in the text with spaces.\n        arg1_value\
+          \ = arg1_value.replace('\\n', ' ')\n        \n        # Add the processed\
+          \ data to the results list.\n        result.append({\n            'optimism':\
+          \ optimism.strip(),\n            'pessimistic': pessimistic.strip(),\n \
+          \           'arg1': arg1_value.strip()\n        })\n    \n    return {\n\
+          \        \"result\": result,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: Split URL and Text Summary
+        type: code
+        variables:
+        - value_selector:
+          - '1716911333343'
+          - output
+          variable: arg1
+      height: 54
+      id: '1720759755103'
+      position:
+        x: 2887
+        y: 424
+      positionAbsolute:
+        x: 2887
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 44
+      id: 1716911333343start0
+      parentId: '1716911333343'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1266
+        y: 492
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        instruction: Please extract the optimistic and pessimistic viewpoints from
+          the article.
+        isInIteration: true
+        iteration_id: '1716911333343'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-2024-08-06
+          provider: openai
+        parameters:
+        - description: Optimistic views in the article section
+          name: optimistic
+          required: true
+          type: string
+        - description: Pessimistic views in the article
+          name: pessimistic
+          required: true
+          type: string
+        query:
+        - '1720758285748'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: Parameter Extractor
+        type: parameter-extractor
+        variables: []
+      extent: parent
+      height: 98
+      id: '1724987616662'
+      parentId: '1716911333343'
+      position:
+        x: 487.9526521842124
+        y: 87.78298920916495
+      positionAbsolute:
+        x: 1729.9526521842124
+        y: 511.78298920916495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1716911333343'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 54f4d2cd-d016-46b1-9de1-8c68f69f89d1
+          role: system
+          text: summerize  the following text{{#1724987616662.optimistic#}}
+        selected: false
+        title: ' optimism '
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      extent: parent
+      height: 98
+      id: '1724988766566'
+      parentId: '1716911333343'
+      position:
+        x: 790.2094380445965
+        y: 192.738322573574
+      positionAbsolute:
+        x: 2032.2094380445965
+        y: 616.738322573574
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1716911333343'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 1f2027f0-b91e-4f2d-88cb-d5db855f3558
+          role: system
+          text: summeraize the following text{{#1724987616662.pessimistic#}}
+        selected: false
+        title: 'Pessimistic '
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      extent: parent
+      height: 98
+      id: '1724988773806'
+      parentId: '1716911333343'
+      position:
+        x: 792.7662639015821
+        y: 330
+      positionAbsolute:
+        x: 2034.766263901582
+        y: 754
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        selected: false
+        template: '|Optimism|Pessimistic|Arg1|
+
+          |---|---|---|
+
+          {% for data in result -%}
+
+          |{{ data.optimism }}|{{ data.pessimistic }}|{{ data.arg1 }}|
+
+          {% endfor -%}
+
+          '
+        title: Template conversion
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1720759755103'
+          - result
+          variable: result
+      height: 54
+      id: '1724991999136'
+      position:
+        x: 3191
+        y: 424
+      positionAbsolute:
+        x: 3191
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -19.376066497149736
+      y: 161.71378254127148
+      zoom: 0.4054475895251213

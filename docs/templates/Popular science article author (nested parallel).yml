@@ -1,0 +1,955 @@
+app:
+  description: ''
+  icon: ✍️
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Popular science article author (nested parallel)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724743284784-source-1724729837516-target
+      selected: false
+      source: '1724743284784'
+      sourceHandle: source
+      target: '1724729837516'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1724729837516-source-1724750759528-target
+      selected: false
+      source: '1724729837516'
+      sourceHandle: source
+      target: '1724750759528'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17247515556590-source-1724765507405-target
+      selected: false
+      source: '17247515556590'
+      sourceHandle: source
+      target: '1724765507405'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724765507405-source-1724766063131-target
+      selected: false
+      source: '1724765507405'
+      sourceHandle: source
+      target: '1724766063131'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1724766063131-source-1724752250590-target
+      selected: false
+      source: '1724766063131'
+      sourceHandle: source
+      target: '1724752250590'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1724750759528-source-1724766700191-target
+      selected: false
+      source: '1724750759528'
+      sourceHandle: source
+      target: '1724766700191'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724766700191-source-1724752250590-target
+      selected: false
+      source: '1724766700191'
+      sourceHandle: source
+      target: '1724752250590'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1724743284784-source-1724924800278-target
+      selected: false
+      source: '1724743284784'
+      sourceHandle: source
+      target: '1724924800278'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1724924800278-source-1724925821012-target
+      selected: false
+      source: '1724924800278'
+      sourceHandle: source
+      target: '1724925821012'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1724925821012-source-1724925966029-target
+      selected: false
+      source: '1724925821012'
+      sourceHandle: source
+      target: '1724925966029'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1724925966029-source-1724926011843-target
+      selected: false
+      source: '1724925966029'
+      sourceHandle: source
+      target: '1724926011843'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724926011843-source-1724752250590-target
+      selected: false
+      source: '1724926011843'
+      sourceHandle: source
+      target: '1724752250590'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1724727524982-source-1724927400256-target
+      selected: false
+      source: '1724727524982'
+      sourceHandle: source
+      target: '1724927400256'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1724927400256-1-1724743284784-target
+      selected: false
+      source: '1724927400256'
+      sourceHandle: '1'
+      target: '1724743284784'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1724927400256-1-17247515556590-target
+      selected: false
+      source: '1724927400256'
+      sourceHandle: '1'
+      target: '17247515556590'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1724927400256-2-1724927639466-target
+      selected: false
+      source: '1724927400256'
+      sourceHandle: '2'
+      target: '1724927639466'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724927639466-source-1724927780214-target
+      selected: false
+      source: '1724927639466'
+      sourceHandle: source
+      target: '1724927780214'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables: []
+      height: 54
+      id: '1724727524982'
+      position:
+        x: 30
+        y: 324
+      positionAbsolute:
+        x: 30
+        y: 324
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: serper
+        provider_name: serper
+        provider_type: builtin
+        selected: false
+        title: Serper
+        tool_configurations: {}
+        tool_label: Serper
+        tool_name: serper
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1724743284784.text#}}'
+        type: tool
+      height: 54
+      id: '1724729837516'
+      position:
+        x: 955.8711169944238
+        y: 506.119699397325
+      positionAbsolute:
+        x: 955.8711169944238
+        y: 506.119699397325
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: b35e06ed-f87d-4722-95d7-66b67e979c83
+          role: system
+          text: 'You need to extract the main topic from the user''s query and transform
+            it into a search engine query. The goal is to find general information,
+            concepts, introductions, definitions, or explanations about that topic.
+            Here is the user''s query: <user_query>{{#sys.query#}}</user_query>
+
+            Your task is to analyze this query and extract its core theme or content.
+            Then, you should transform it into a concise search engine query to help
+            find general information about the topic. Follow these steps: Carefully
+            read and understand the user''s query. Identify the main theme or content
+            of the query. This could be a concept, person, event, or phenomenon that
+            the user is inquiring about. Remove unnecessary details or context that
+            are not important for understanding the core theme. Formulate a short,
+            clear English search query focusing on the main theme, which has the potential
+            to return general information, definitions, or explanations about this
+            topic.
+
+
+            Search Query Guidelines:
+
+            Focus on nouns and keywords related to the main theme.
+
+            Avoid using personal pronouns, articles, and unnecessary words.
+
+
+            Please provide your answer in English in the following format: <search_query>Write
+            down the search engine queries you have formed.</search_query>'
+        selected: false
+        title: Extract the theme.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724743284784'
+      position:
+        x: 619.4285714285714
+        y: 506.119699397325
+      positionAbsolute:
+        x: 619.4285714285714
+        y: 506.119699397325
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 85cb236f-91f8-4629-ab7c-7b3db9ca6c4d
+          role: system
+          text: 'Your role: You are Bai Xiaosheng - the best research and explanation
+            agent in the world. Your job: To explain {{#sys.query#}}with consistent
+            language in various possible ways, making it easy to understand.{{#sys.query#}}
+
+
+            Your motivation: to give learners an "aha" moment for everything they
+            need to understand. You can achieve this by mastering the art of explanation.
+
+            Learner Profile: The learner knows nothing! He is a complete beginner.
+            He can only understand simple language, without jargon or heavy grammar.
+            He likes to visualize concepts, which helps him understand better.'
+        - id: c5c1b592-96d5-40b1-9d5e-dac9633bd749
+          role: user
+          text: "{{#1724729837516.text#}}Summarize the information and write down\
+            \ the most important points you find in the content. Note: Most importantly,\
+            \ this information will help learners understand \"What is this <topic>?\"\
+            \ Do not select the same information from all summaries. Always discover\
+            \ something new in each subsequent summary.\n\n{{#sys.query#}}\n<instructions>\
+            \  1. First, identify the concepts that need to be simplified, using language\
+            \ that high school students can understand.\n\n2. Break down complex concepts\
+            \ into smaller, more digestible parts so they can be easily explained\
+            \ to high school students.\n\n3. Use simple language and avoid technical\
+            \ jargon to ensure clarity and understanding.\n\n4. Provide real-life\
+            \ examples or analogies to help illustrate the concept in a relevant way.\n\
+            \n5. Ensure the explanation is concise and clear, focusing on the key\
+            \ aspects of the concept.\n\n6. Remember to avoid using any XML tags in\
+            \ your output since the final explanation should be plain text.\n\n7.\
+            \ Present scientific knowledge in a style similar to Zhihu's approach.\n\
+            \n</instructions> \n<examples> <example> For the concept of photosynthesis:\
+            \ Input: The process by which green plants and some other organisms use\
+            \ sunlight to synthesize food through chlorophyll. Output: Plants make\
+            \ their own food using sunlight and a green pigment called chlorophyll.</example>\
+            \ <example> For the concept of gravity: Input: The force that attracts\
+            \ an object toward the center of the Earth or any other physical body\
+            \ with mass. Output: Gravity is what keeps us on the ground and makes\
+            \ things fall down.</example> <example> For the concept of democracy:\
+            \ Input: A system of government in which representatives are elected by\
+            \ all residents or all eligible members to govern. Output: Democracy is\
+            \ when people in a country vote to choose their leaders and make decisions\
+            \ together.</example></examples>"
+        selected: false
+        title: Provide a topic from the internet.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724750759528'
+      position:
+        x: 1251.3101820807988
+        y: 506.119699397325
+      positionAbsolute:
+        x: 1251.3101820807988
+        y: 506.119699397325
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.1
+            presence_penalty: 0.1
+            temperature: 0.8
+            top_p: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: b35e06ed-f87d-4722-95d7-66b67e979c83
+          role: system
+          text: 'Introduce concepts using analogies or metaphors.{{#sys.query#}}
+
+            For example, the analogy of Docker: Imagine you are running a food truck
+            business. 🚐🍔 You have a recipe book (Dockerfile) that details how to make
+            your signature dishes. 📘 Based on this recipe, you''ve prepared some pre-made
+            ingredients and seasonings (Docker images). These are neatly packed in
+            sealed containers, ready for use at any time. 🥫🧂 When customers come to
+            order, you don''t start cooking from scratch; instead, you take out these
+            pre-made ingredients (base image), quickly assemble and heat them up (create
+            a container). 🔥 Each order (container) is made and served in its own box
+            (isolated environment), without affecting one another. 🍱 Your food truck
+            can easily go anywhere (portability), providing the exact same dining
+            experience there. 🌆🏙️ When you want to update the menu, all you need to
+            do is modify your recipe book (update Dockerfile) and prepare new pre-made
+            ingredients (build new image). 🆕 You can also share your recipes on food
+            forums (Docker Hub), allowing other food truck owners to make your signature
+            dishes as well. 🌐👨‍🍳👩‍🍳'
+        selected: false
+        title: Provide metaphors and similes.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '17247515556590'
+      position:
+        x: 619.4285714285714
+        y: 306.87813017274993
+      positionAbsolute:
+        x: 619.4285714285714
+        y: 306.87813017274993
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: "\n{{#1724750759528.text#}}\n\nTerminology Demystified:\n{{#1724766700191.text#}}\n\
+          ---------------------------------------------- \n{{#1724766063131.files#}}\n\
+          ---------------------------------------------- \n\nAnalogies in life:\n\
+          {{#17247515556590.text#}}\n\nStudy plan:\n{{#1724925821012.plan#}}\n{{#1724926011843.text#}}"
+        desc: ''
+        selected: false
+        title: Direct reply
+        type: answer
+        variables: []
+      height: 263
+      id: '1724752250590'
+      position:
+        x: 2115.195325431875
+        y: 437.63222008832474
+      positionAbsolute:
+        x: 2115.195325431875
+        y: 437.63222008832474
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            presence_penalty: 0.5
+            temperature: 0.2
+            top_p: 0.75
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 5e1f13b1-f7db-4af4-926d-021465d03db3
+          role: system
+          text: 'You are tasked with converting metaphorical or analogical descriptions
+            into prompt words suitable for image generation AI models like Midjourney
+            or Stable Diffusion. Your goal is to create a list of descriptive words
+            or phrases that capture the essence of the given description, which can
+            be used to generate relevant images.
+
+
+            Guidelines for interpreting the input:
+
+            1. Identify key elements, themes, and imagery in the description
+
+            2. Consider the mood, style, and atmosphere implied by the description
+
+            3. Look for specific objects, colors, textures, or visual elements mentioned
+
+
+            Process for converting the description to prompt words:
+
+            1. Break down the description into its core components
+
+            2. Translate metaphorical language into concrete visual elements
+
+            3. Add relevant adjectives to enhance the visual description
+
+            4. Include any specific artistic styles or techniques that might be appropriate
+
+            5. Must use English.
+
+
+            Output format:
+
+            - Provide a list of English words or short phrases separated by commas
+
+            - Ensure the list is comprehensive yet concise
+
+            - Avoid repetition and redundancy
+
+            - Order the words from most important/relevant to least
+
+
+            Here is the description you will be working with:
+
+
+            <description>
+
+            {{#17247515556590.text#}}
+
+            </description>
+
+
+            Example:
+
+            If the input description was "Her voice was as smooth as honey, filling
+            the room with warmth," you might produce the following output:
+
+            golden voice, warm atmosphere, flowing honey, soft light, soothing tones,
+            amber glow, melodic waves, comforting presence
+
+
+            Now, please convert the given description into prompt words for image
+            generation. Begin your response with <prompt_words> and end it with </prompt_words>.'
+        selected: false
+        title: Generate image prompts.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724765507405'
+      position:
+        x: 955.8711169944238
+        y: 306.87813017274993
+      positionAbsolute:
+        x: 955.8711169944238
+        y: 306.87813017274993
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: dalle
+        provider_name: dalle
+        provider_type: builtin
+        selected: false
+        title: DALL-E 3 painting
+        tool_configurations:
+          n: 1
+          quality: standard
+          size: horizontal
+          style: natural
+        tool_label: DALL-E 3 绘画
+        tool_name: dalle3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1724765507405.text#}}'
+        type: tool
+      height: 168
+      id: '1724766063131'
+      position:
+        x: 1251.3101820807988
+        y: 306.87813017274993
+      positionAbsolute:
+        x: 1251.3101820807988
+        y: 306.87813017274993
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 9a90b782-d1d0-4984-b50b-fef2fb2737a4
+          role: system
+          text: 'List{{#1724750759528.text#}}Mention professional terms that may cause
+            understanding barriers, and then provide a brief explanation for each
+            one.
+
+            Please be careful not to output any other content.
+
+            <example format>
+
+            Interest rate: The percentage of interest that banks pay to depositors.
+            Currency exchange: The process of converting one currency into another.
+            Deposit: Putting money into a bank, which will pay you interest. Interest:
+            The additional income earned on your deposited money after a period of
+            time.
+
+            </example format>'
+        selected: false
+        title: Terminology Literacy
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724766700191'
+      position:
+        x: 1550
+        y: 499.5247355793581
+      positionAbsolute:
+        x: 1550
+        y: 499.5247355793581
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 886c82c6-de0d-45fa-a801-83a6836e16dd
+          role: system
+          text: "<instructions>\n1. Begin by understanding the Bloom's taxonomy of\
+            \ learning pathways, which include remembering, understanding, applying,\
+            \ analyzing, synthesizing, and evaluating.\n2. Utilize the Bloom's taxonomy\
+            \ to create a structured learning plan for a student, focusing on each\
+            \ of the learning pathways mentioned.\n3. Develop a detailed study plan\
+            \ that outlines specific activities, resources, and assessments for each\
+            \ stage of the Bloom's taxonomy.\n4. Ensure that the learning plan is\
+            \ comprehensive and covers all aspects of the learning process, from basic\
+            \ memorization to critical evaluation.\n5. Remember to format the output\
+            \ without any XML tags, as the final result should be a clear and concise\
+            \ study plan for the student.\n\n<examples>\n<example>\nInput:\n- Bloom's\
+            \ taxonomy learning pathways: remembering, understanding, applying, analyzing,\
+            \ synthesizing, evaluating\n\nOutput:\n- Study Plan:\n  - Remembering:\
+            \ Flashcards for key concepts\n  - Understanding: Reading assignments\
+            \ with comprehension questions\n  - Applying: Practical exercises or simulations\n\
+            \  - Analyzing: Case studies or problem-solving tasks\n  - Synthesizing:\
+            \ Group projects or research papers\n  - Evaluating: Peer reviews or self-assessments\n\
+            </example>\n\n<example>\nInput:\n- Bloom's taxonomy learning pathways:\
+            \ understanding, applying, analyzing, evaluating\n\nOutput:\n- Study Plan:\n\
+            \  - Understanding: Concept mapping activities\n  - Applying: Hands-on\
+            \ experiments or real-world applications\n  - Analyzing: Data interpretation\
+            \ tasks or critical thinking exercises\n  - Evaluating: Debates or presentations\
+            \ with peer feedback\n</example>\n\n<example>\nInput:\n- Bloom's taxonomy\
+            \ learning pathways: remembering, applying, synthesizing\n\nOutput:\n\
+            - Study Plan:\n- 用于谷歌查询的 query\n\n</example>"
+        - id: 95174a7b-1579-44be-8a55-09dee29b93f1
+          role: user
+          text: '根据{{#1724743284784.text#}}给出学习计划
+
+            '
+        selected: false
+        title: Study Plan
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724924800278'
+      position:
+        x: 942
+        y: 762
+      positionAbsolute:
+        x: 942
+        y: 762
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: "{{#1724924800278.text#}}Extraction  \nStudy Plan  \nUse the\
+          \ query in the text as search terms for Google, and must return in English.\n\
+          {{#1724924800278.text#}}Extraction  \nStudy Plan , {{#sys.query#}}Return\
+          \ in markdown format using the language of query, with bullet points."
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        parameters:
+        - description: 学习计划
+          name: plan
+          required: true
+          type: string
+        - description: 查询
+          name: query
+          required: true
+          type: string
+        query:
+        - '1724924800278'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: Parameter Extractor
+        type: parameter-extractor
+        variables: []
+      height: 98
+      id: '1724925821012'
+      position:
+        x: 1246
+        y: 757.5
+      positionAbsolute:
+        x: 1246
+        y: 757.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: tavily
+        provider_name: tavily
+        provider_type: builtin
+        selected: false
+        title: TavilySearch
+        tool_configurations:
+          exclude_domains: null
+          include_answer: null
+          include_domains: null
+          include_images: null
+          include_raw_content: null
+          max_results: 5
+          search_depth: basic
+        tool_label: TavilySearch
+        tool_name: tavily_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1724925821012.query#}}'
+        type: tool
+      height: 246
+      id: '1724925966029'
+      position:
+        x: 1550
+        y: 683.5
+      positionAbsolute:
+        x: 1550
+        y: 683.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 63cad421-2fca-4c36-b04f-1066992cf29e
+          role: system
+          text: '{{#1724925966029.text#}}Extract the URL and description in the format:
+            Learning materials (provide a few words of description): url.'
+        selected: false
+        title: Provide study materials.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724926011843'
+      position:
+        x: 1852.287813017275
+        y: 762
+      positionAbsolute:
+        x: 1852.287813017275
+        y: 762
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 'Identify whether the user is asking questions about concepts, definitions,
+            or introductions to terms. If so, choose this category: For example: What
+            is quantitative easing? What is Docker? What does CRM mean? Can you explain
+            digital nomads to me?'
+        - id: '2'
+          name: Other issues, such as users' casual conversations.
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        query_variable_selector:
+        - '1724727524982'
+        - sys.query
+        selected: false
+        title: Question Classifier
+        topics: []
+        type: question-classifier
+      height: 312
+      id: '1724927400256'
+      position:
+        x: 332.57142857142856
+        y: 324
+      positionAbsolute:
+        x: 332.57142857142856
+        y: 324
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: cc4f5e3a-02b0-4ae1-9f18-d4157e464042
+          role: system
+          text: Refuse users' small talk.
+        selected: false
+        title: Refuse small talk.
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724927639466'
+      position:
+        x: 631.4138803076465
+        y: 917.5000000000001
+      positionAbsolute:
+        x: 631.4138803076465
+        y: 917.5000000000001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1724927639466.text#}}'
+        desc: ''
+        selected: false
+        title: Answer 2
+        type: answer
+        variables: []
+      height: 107
+      id: '1724927780214'
+      position:
+        x: 942
+        y: 917.5000000000001
+      positionAbsolute:
+        x: 942
+        y: 917.5000000000001
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 352.24422685505715
+      y: 183.0841981724734
+      zoom: 0.5563911916831185

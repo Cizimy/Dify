@@ -1,0 +1,729 @@
+app:
+  description: ''
+  icon: 📝
+  icon_background: '#EFF1F5'
+  mode: advanced-chat
+  name: Novel Story and Role Generator (Simple Parallel Run)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1724834305994-llm
+      selected: false
+      source: '1724834305994'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1724835696571-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1724835696571'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1724836594623-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1724836594623'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1724836650906-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1724836650906'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724836774572-source-answer-target
+      selected: false
+      source: '1724836774572'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724835696571-source-1724838137187-target
+      selected: false
+      source: '1724835696571'
+      sourceHandle: source
+      target: '1724838137187'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724836594623-source-17248381424170-target
+      selected: false
+      source: '1724836594623'
+      sourceHandle: source
+      target: '17248381424170'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724836650906-source-17248381430980-target
+      selected: false
+      source: '1724836650906'
+      sourceHandle: source
+      target: '17248381430980'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1724838137187-source-1724836774572-target
+      source: '1724838137187'
+      sourceHandle: source
+      target: '1724836774572'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 17248381424170-source-1724836774572-target
+      source: '17248381424170'
+      sourceHandle: source
+      target: '1724836774572'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 17248381430980-source-1724836774572-target
+      source: '17248381430980'
+      sourceHandle: source
+      target: '1724836774572'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Novel Style
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: novel_style
+        - label: Novel Rhythm
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: novel_rhythm
+        - label: Role-01
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: role_01
+        - label: Role-02
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: role_02
+        - label: Role-03
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: role_03
+      height: 194
+      id: '1724834305994'
+      position:
+        x: -55.358575530143526
+        y: 512.077969386271
+      positionAbsolute:
+        x: -55.358575530143526
+        y: 512.077969386271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            Novel Style: {{#1724834305994.novel_style#}}
+
+            Novel Rhythm: {{#1724834305994.novel_rhythm#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: a59dc5e6-942a-409e-9913-daf9df901052
+          role: system
+          text: 'You are a professional novelist. Based on the information provided
+            by the user, complete the general worldview of the novel.
+
+            Please follow this format for your output:
+
+
+            {Novel''s worldview and tone}
+
+            Please respond in {{#sys.query#}} language.'
+        selected: false
+        title: Novel Tone
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: llm
+      position:
+        x: 325.57016372779447
+        y: 512.077969386271
+      positionAbsolute:
+        x: 325.57016372779447
+        y: 512.077969386271
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Novel Worldwide：
+
+          {{#llm.text#}}
+
+
+          Novel Story：
+
+          {{#1724836774572.text#}}
+
+
+          Characters in the Story:
+
+          {{#1724835696571.text#}}
+
+          Role 01 Card：{{#1724838137187.files#}}
+
+          {{#1724836594623.text#}}
+
+          Role 02 Card：{{#17248381424170.files#}}
+
+          {{#1724836650906.text#}}
+
+          Role 03 Card：{{#17248381430980.files#}}'
+        desc: ''
+        selected: false
+        title: Final Story
+        type: answer
+        variables: []
+      height: 268
+      id: answer
+      position:
+        x: 1902.9938935375344
+        y: 512.077969386271
+      positionAbsolute:
+        x: 1902.9938935375344
+        y: 512.077969386271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: cff349a4-59a9-4f9a-bafe-424c5d1bb8bc
+          role: system
+          text: 'You are now a professional novel character creation expert. Based
+            on the following novel''s worldview:
+
+
+            <{{#llm.text#}}>
+
+
+            And according to the user''s character requirements <{{#1724834305994.role_01#}}>，please
+            complete this character''s basic information in the following format:
+
+
+            `
+
+            Name:
+
+            Species:
+
+            Gender:
+
+            Hair color:
+
+            Character preferences:
+
+            Character abilities:
+
+            `
+
+
+            Note: The character you create must align with the novel''s worldview.
+
+            Please respond in {{#sys.query#}} language.'
+        - id: 2b6f39c9-09c9-4f06-ba74-a5abc3857484
+          role: user
+          text: '{{#sys.query#}}
+
+            Role requirements: {{#1724834305994.role_01#}}'
+        selected: false
+        title: Role-01
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724835696571'
+      position:
+        x: 725.0036250416084
+        y: 282
+      positionAbsolute:
+        x: 725.0036250416084
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: 54e9bf8f-080b-438f-9fdd-d31b6ca4463b
+          role: system
+          text: 'You are now a professional novel character creation expert. Based
+            on the following novel''s worldview:
+
+
+            <{{#llm.text#}}>
+
+
+            And according to the user''s character requirements <{{#1724834305994.role_02#}}>，please
+            complete this character''s basic information in the following format:
+
+
+            `
+
+            Name:
+
+            Species:
+
+            Gender:
+
+            Hair color:
+
+            Character preferences:
+
+            Character abilities:
+
+            `
+
+
+            Note: The character you create must align with the novel''s worldview.
+
+            Please respond in {{#sys.query#}} language.'
+        - id: 8034171d-8129-4fdb-aa08-906add8e9e77
+          role: user
+          text: '{{#sys.query#}}
+
+            Role requirements:{{#1724834305994.role_02#}}'
+        selected: false
+        title: Role-02
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724836594623'
+      position:
+        x: 725.0036250416084
+        y: 512.077969386271
+      positionAbsolute:
+        x: 725.0036250416084
+        y: 512.077969386271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: 6dbdd2a5-acf4-4e7e-a151-b1a7c9c02f80
+          role: system
+          text: 'You are now a professional novel character creation expert. Based
+            on the following novel''s worldview:
+
+
+            <{{#llm.text#}}>
+
+
+            And according to the user''s character requirements <{{#1724834305994.role_03#}}>，please
+            complete this character''s basic information in the following format:
+
+
+            `
+
+            Name:
+
+            Species:
+
+            Gender:
+
+            Hair color:
+
+            Character preferences:
+
+            Character abilities:
+
+            `
+
+
+            Note: The character you create must align with the novel''s worldview.
+
+            Please respond in {{#sys.query#}} language.'
+        - id: 0db3a2f0-11d6-4218-a18f-52b71c0112a1
+          role: user
+          text: '{{#sys.query#}}
+
+            Role requirements:{{#1724834305994.role_03#}}'
+        selected: false
+        title: Role-03
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724836650906'
+      position:
+        x: 725.0036250416084
+        y: 783.933200142707
+      positionAbsolute:
+        x: 725.0036250416084
+        y: 783.933200142707
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20240620
+          provider: anthropic
+        prompt_template:
+        - id: a16bb678-4b3e-402d-a668-6ed87355688c
+          role: system
+          text: "You are a novel plot expert. Based on the user's input of the novel's\
+            \ tone and characters, write a story that fits the specified style {{#1724834305994.novel_style#}}for\
+            \ them.\n\nThe final output should follow this format:\n\n<Novel Title>\
+            \ \n<Novel Plot> \n<Novel Ending>\n\nWhen writing the novel's plot, you\
+            \ can choose any character as the protagonist and write in the first person.\
+            \ The writing style should be natural, and the story should be detailed.\
+            \ You can add some witty and humorous content in the middle.\nPlease respond\
+            \ in {{#sys.query#}} language."
+        - id: aec816e5-e5b4-4a8b-ad22-6a22d985311e
+          role: user
+          text: 'Novel Tone:{{#llm.text#}}
+
+            Role involved:
+
+            {{#1724834305994.role_01#}}
+
+            {{#1724834305994.role_02#}}
+
+            {{#1724834305994.role_03#}}'
+        selected: false
+        title: Novel Content Completion
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724836774572'
+      position:
+        x: 1581.9869040574301
+        y: 512.077969386271
+      positionAbsolute:
+        x: 1581.9869040574301
+        y: 512.077969386271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: dalle
+        provider_name: dalle
+        provider_type: builtin
+        selected: false
+        title: Role 01 Image
+        tool_configurations:
+          n: 1
+          quality: standard
+          size: square
+          style: natural
+        tool_label: DALL-E 3 绘画
+        tool_name: dalle3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1724835696571.text#}}Flat illustration style, no text required
+              in the images.'
+        type: tool
+      height: 168
+      id: '1724838137187'
+      position:
+        x: 1121.1636009566719
+        y: 282
+      positionAbsolute:
+        x: 1121.1636009566719
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: dalle
+        provider_name: dalle
+        provider_type: builtin
+        selected: false
+        title: Role 02 Image
+        tool_configurations:
+          n: 1
+          quality: standard
+          size: square
+          style: natural
+        tool_label: DALL-E 3 绘画
+        tool_name: dalle3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1724836594623.text#}} Flat illustration style, no text required
+              in the images.'
+        type: tool
+      height: 168
+      id: '17248381424170'
+      position:
+        x: 1121.1636009566719
+        y: 512.077969386271
+      positionAbsolute:
+        x: 1121.1636009566719
+        y: 512.077969386271
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: dalle
+        provider_name: dalle
+        provider_type: builtin
+        selected: false
+        title: Role 03 Image
+        tool_configurations:
+          n: 1
+          quality: standard
+          size: square
+          style: natural
+        tool_label: DALL-E 3 绘画
+        tool_name: dalle3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1724836650906.text#}}Flat illustration style, no text required
+              in the images.'
+        type: tool
+      height: 168
+      id: '17248381430980'
+      position:
+        x: 1121.1636009566719
+        y: 783.933200142707
+      positionAbsolute:
+        x: 1121.1636009566719
+        y: 783.933200142707
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Allen
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Character
+          generation phase for the novel. You can add or remove characters based on
+          the story archetype.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1725374775934'
+      position:
+        x: 737.5974730909346
+        y: 123.21554225668152
+      positionAbsolute:
+        x: 737.5974730909346
+        y: 123.21554225668152
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: Allen
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          column is for generating character illustrations for the novel. You can
+          add or remove character illustrations as needed.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1725374807979'
+      position:
+        x: 1425.148449723117
+        y: 225.61043868327366
+      positionAbsolute:
+        x: 1425.148449723117
+        y: 225.61043868327366
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: 207.9154017044424
+      y: 153.66470619347183
+      zoom: 0.4715027015288136

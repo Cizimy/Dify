@@ -1,0 +1,374 @@
+app:
+  description: ''
+  icon: 📙
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Text Summarization Workflow
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1711526421923-1711526430540
+      source: '1711526421923'
+      sourceHandle: source
+      target: '1711526430540'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: variable-assigner
+      id: 1711526430540-1711526428184
+      source: '1711526430540'
+      sourceHandle: source
+      target: '1711526428184'
+      targetHandle: '1711526430540'
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: variable-assigner
+      id: 1711526424455-1711526428184
+      source: '1711526424455'
+      sourceHandle: source
+      target: '1711526428184'
+      targetHandle: '1711526424455'
+      type: custom
+    - data:
+        sourceType: variable-assigner
+        targetType: template-transform
+      id: 1711526428184-1711526522789
+      source: '1711526428184'
+      sourceHandle: source
+      target: '1711526522789'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711526522789-1711526526878
+      source: '1711526522789'
+      sourceHandle: source
+      target: '1711526526878'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1712563849389-1711526421923
+      source: '1712563849389'
+      sourceHandle: 'true'
+      target: '1711526421923'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: 1712563849389-1711526424455
+      source: '1712563849389'
+      sourceHandle: 'false'
+      target: '1711526424455'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: start
+        targetType: if-else
+      id: 1711526002155-1712563849389
+      source: '1711526002155'
+      sourceHandle: source
+      target: '1712563849389'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: 'Input here. '
+          max_length: 200
+          options: []
+          required: true
+          type: paragraph
+          variable: input
+        - label: Technical Summary OR General Overview
+          max_length: 48
+          options:
+          - Technical Summary
+          - General Overview
+          required: true
+          type: select
+          variable: summaryStyle
+      dragging: false
+      height: 115
+      id: '1711526002155'
+      position:
+        x: 80.5
+        y: 515.5
+      positionAbsolute:
+        x: 80.5
+        y: 515.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        conditions:
+        - comparison_operator: contains
+          id: '1712563872930'
+          value: Technical
+          variable_selector:
+          - '1711526002155'
+          - summaryStyle
+        desc: ''
+        logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 125
+      id: '1712563849389'
+      position:
+        x: 369.5
+        y: 515.5
+      positionAbsolute:
+        x: 369.5
+        y: 515.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - 6084ed3f-d100-4df2-a277-b40d639ea7c6
+        desc: 'If technical, use knowledge to access external information. '
+        query_variable_selector:
+        - '1711526002155'
+        - input
+        retrieval_mode: single
+        selected: false
+        single_retrieval_config:
+          model:
+            completion_params: {}
+            mode: chat
+            name: gpt-3.5-turbo
+            provider: openai
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      dragging: false
+      height: 101
+      id: '1711526421923'
+      position:
+        x: 645.5
+        y: 515.5
+      positionAbsolute:
+        x: 645.5
+        y: 515.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: General Overview
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: "<Task>\nDo a general overview style summary to the following text.\
+            \ Use the same language as text to be summarized. \n<Text to be summarized>\n\
+            {{#1711526002155.input#}}\n<Summary>"
+        selected: false
+        title: LLM 2
+        type: llm
+        variables:
+        - value_selector:
+          - '1711526002155'
+          - input
+          variable: input
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711526424455'
+      position:
+        x: 928.5
+        y: 675.0714285714286
+      positionAbsolute:
+        x: 928.5
+        y: 675.0714285714286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: 'Combine output of two branches into one.  '
+        output_type: string
+        selected: false
+        title: Variable Assigner
+        type: variable-assigner
+        variables:
+        - - '1711526430540'
+          - text
+        - - '1711526424455'
+          - text
+      dragging: false
+      height: 213
+      id: '1711526428184'
+      position:
+        x: 1211.5
+        y: 515.5
+      positionAbsolute:
+        x: 1211.5
+        y: 515.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1711526421923'
+          - result
+        desc: 'Use knowledge to generate a more technical and accurate summary. '
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: "<Task>\nWith reference to result of knowledge retrieval. Do a technical\
+            \ summary to the following text. Use the same language as text to be summarized.\
+            \ \n<Knowledge>\nUse the following context as your learned knowledge,\
+            \ inside <context></context> XML tags.\n<context>\n{{#context#}}\n</context>\n\
+            When answer to user:\n- If you don't know, just say that you don't know.\n\
+            - If you don't know when you are not sure, ask for clarification.\nAvoid\
+            \ mentioning that you obtained the information from the context.\nAnd\
+            \ answer according to the language of the user's question.\n<Text to be\
+            \ summarized>\n{{#1711526002155.input#}}\n<Summary>"
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711526002155'
+          - input
+          variable: input
+        vision:
+          enabled: false
+      dragging: false
+      height: 145
+      id: '1711526430540'
+      position:
+        x: 928.5
+        y: 515.5
+      positionAbsolute:
+        x: 928.5
+        y: 515.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: "<h1> Summary </h1>\r\n{{ output }}\r\n"
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711526428184'
+          - output
+          variable: output
+      dragging: false
+      height: 53
+      id: '1711526522789'
+      position:
+        x: 1494.5
+        y: 515.5
+      positionAbsolute:
+        x: 1494.5
+        y: 515.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711526522789'
+          - output
+          variable: output
+        selected: false
+        title: End
+        type: end
+      dragging: false
+      height: 89
+      id: '1711526526878'
+      position:
+        x: 1777.5
+        y: 515.5
+      positionAbsolute:
+        x: 1777.5
+        y: 515.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -18.05607656729751
+      y: -139.10814780485845
+      zoom: 0.8408964152537146

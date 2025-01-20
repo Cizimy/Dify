@@ -1,0 +1,371 @@
+app:
+  description: ''
+  icon: 🔄
+  icon_background: '#D1E0FF'
+  mode: workflow
+  name: 'Three-Step Translation Workflow  '
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1711067409646-1711067429397
+      source: '1711067409646'
+      sourceHandle: source
+      target: '1711067429397'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1711067429397-1711067578643
+      source: '1711067429397'
+      sourceHandle: source
+      target: '1711067578643'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1711067578643-1711067817657
+      source: '1711067578643'
+      sourceHandle: source
+      target: '1711067817657'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1711067817657-1711068087661
+      source: '1711067817657'
+      sourceHandle: source
+      target: '1711068087661'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: end
+      id: 1711068087661-1711068257370
+      source: '1711068087661'
+      sourceHandle: source
+      target: '1711068257370'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Input Text
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: input_text
+      dragging: false
+      height: 89
+      id: '1711067409646'
+      position:
+        x: 79.5
+        y: 2843.5
+      positionAbsolute:
+        x: 79.5
+        y: 2843.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 'Identify technical terms. '
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 4c08e889-b9cb-49a1-b941-bd156f4b2329
+          role: system
+          text: "<Task> Identify the technical terms in the users input. Use the following\
+            \ format {XXX} -> {XXX} to show the corresponding technical terms before\
+            \ and after translation. \n\n<Input Text> \n{{#1711067409646.input_text#}}\n\
+            \n<Example>\nTransformer -> Transformer\nToken -> Token \nZero Shot ->\
+            \ 零样本\nFew Shot -> 少样本\n<Technical Terms> "
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711067409646'
+          - input_text
+          variable: input_text
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 127
+      id: '1711067429397'
+      position:
+        x: 362.5
+        y: 2843.5
+      positionAbsolute:
+        x: 362.5
+        y: 2843.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Direct Translation
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            max_tokens: 2101
+            presence_penalty: 0.2
+            temperature: 0.5
+            top_p: 0.85
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 3a80e17e-9b2e-426e-986d-94e3ec2d80f3
+          role: system
+          text: "<Task> You are a professional translator proficient in Simplified\
+            \ Chinese especially skilled in translating professional academic papers\
+            \ into easy-to-understand popular science articles. Please help me translate\
+            \ the following english paragraph into Chinese, in a style similar to\
+            \ Chinese popular science articles .\n<Constraints> \nTranslate directly\
+            \ based on the English content, maintain the original format and do not\
+            \ omit any information. \n<Before Translation> \n{{#1711067409646.input_text#}}\n\
+            <Direct Translation> "
+        selected: false
+        title: LLM 2
+        type: llm
+        variables:
+        - value_selector:
+          - '1711067409646'
+          - input_text
+          variable: input_text
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 127
+      id: '1711067578643'
+      position:
+        x: 645.5
+        y: 2843.5
+      positionAbsolute:
+        x: 645.5
+        y: 2843.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Problems of direct translation
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 2601
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 21a7126f-e5f9-4dc5-a3c1-46d2d3aa46e5
+          role: system
+          text: "<Task>\nBased on the results of the direct translation, point out\
+            \ specific issues it have. Accurate descriptions are required, avoiding\
+            \ vague statements, and there's no need to add content or formats that\
+            \ were not present in the original text, including but not liimited to:\
+            \ \n- inconsistent with chinese expression habits, clearly indicate where\
+            \ it does not conform\n- Clumsy sentences, specify the location, no need\
+            \ to offer suggestions for modification, which will be fixed during free\
+            \ translation\n- Obscure and difficult to understand, attempts to explain\
+            \ may be made\n<Direct Translation>\n{{#1711067578643.text#}}\n<Original\
+            \ Text>\n{{#1711067409646.input_text#}}\n<Problems with the Direct Translation>"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables:
+        - value_selector:
+          - '1711067409646'
+          - input_text
+          variable: input_text
+        - value_selector:
+          - '1711067578643'
+          - text
+          variable: text
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 127
+      id: '1711067817657'
+      position:
+        x: 928.5
+        y: 2843.5
+      positionAbsolute:
+        x: 928.5
+        y: 2843.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Translation by its meaning - second translation
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 4096
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 02ba6f7f-9cf7-4433-bc9a-c28406243465
+          role: system
+          text: "Based on the results of the direct translation in the first step\
+            \ and the problems identified in the second step, re-translate to achieve\
+            \ a meaning-based interpretation. Ensure the original intent of the content\
+            \ is preserved while making it easier to understand and more in line with\
+            \ Chinese expression habits. All the while maintaining the original format\
+            \ unchanged. \n<Direct Translation> \n{{#1711067578643.text#}}\n<problems\
+            \ in the first translation>\n{{#1711067817657.text#}}\n<Meaning-Based\
+            \ Translation> "
+        selected: false
+        title: LLM 4
+        type: llm
+        variables:
+        - value_selector:
+          - '1711067578643'
+          - text
+          variable: direct_translation
+        - value_selector:
+          - '1711067817657'
+          - text
+          variable: problems
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 145
+      id: '1711068087661'
+      position:
+        x: 1211.5
+        y: 2843.5
+      positionAbsolute:
+        x: 1211.5
+        y: 2843.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711068087661'
+          - text
+          variable: second_translation
+        selected: false
+        title: End
+        type: end
+      height: 89
+      id: '1711068257370'
+      position:
+        x: 1494.5
+        y: 2843.5
+      positionAbsolute:
+        x: 1494.5
+        y: 2843.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 155
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Workflow
+          for enhancing translation accuracy by identifying proper nouns, literal
+          translations, pointing out issues with literal translations, and suggesting
+          idiomatic translations.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 361
+      height: 155
+      id: '1718994930714'
+      position:
+        x: 226.5258927125837
+        y: 2637.0565984306722
+      positionAbsolute:
+        x: 226.5258927125837
+        y: 2637.0565984306722
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 361
+    viewport:
+      x: 23.750807208034075
+      y: -2463.5528443722815
+      zoom: 0.9899494936611664

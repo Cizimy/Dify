@@ -1,0 +1,435 @@
+app:
+  description: ''
+  icon: face_with_monocle
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 'Question Classifier + Knowledge + Chatbot '
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: question-classifier
+      id: 1711528708197-1711528709608
+      source: '1711528708197'
+      sourceHandle: source
+      target: '1711528709608'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1711528709608-1711528768556
+      source: '1711528709608'
+      sourceHandle: '1711528736036'
+      target: '1711528768556'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1711528709608-1711528770201
+      source: '1711528709608'
+      sourceHandle: '1711528736549'
+      target: '1711528770201'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: answer
+      id: 1711528709608-1711528775142
+      source: '1711528709608'
+      sourceHandle: '1711528737066'
+      target: '1711528775142'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1711528768556-1711528802931
+      source: '1711528768556'
+      sourceHandle: source
+      target: '1711528802931'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1711528770201-1711528815414
+      source: '1711528770201'
+      sourceHandle: source
+      target: '1711528815414'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: 1711528802931-1711528833796
+      source: '1711528802931'
+      sourceHandle: source
+      target: '1711528833796'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: 1711528815414-1711528835179
+      source: '1711528815414'
+      sourceHandle: source
+      target: '1711528835179'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: Define the initial parameters for launching a workflow
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 101
+      id: '1711528708197'
+      position:
+        x: 79.5
+        y: 714.5
+      positionAbsolute:
+        x: 79.5
+        y: 714.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        classes:
+        - id: '1711528736036'
+          name: Question related to after sales
+        - id: '1711528736549'
+          name: Questions about how to use products
+        - id: '1711528737066'
+          name: Other questions
+        desc: 'Define the classification conditions of user questions, LLM can define
+          how the conversation progresses based on the classification description. '
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        query_variable_selector:
+        - '1711528708197'
+        - sys.query
+        selected: false
+        title: Question Classifier
+        topics: []
+        type: question-classifier
+      height: 307
+      id: '1711528709608'
+      position:
+        x: 362.5
+        y: 714.5
+      positionAbsolute:
+        x: 362.5
+        y: 714.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - 6084ed3f-d100-4df2-a277-b40d639ea7c6
+        - 0e6a8774-3341-4643-a185-cf38bedfd7fe
+        desc: 'Retrieve knowledge on after sales SOP. '
+        query_variable_selector:
+        - '1711528708197'
+        - sys.query
+        retrieval_mode: single
+        selected: false
+        single_retrieval_config:
+          model:
+            completion_params: {}
+            mode: chat
+            name: gpt-3.5-turbo
+            provider: openai
+        title: 'Knowledge Retrieval '
+        type: knowledge-retrieval
+      dragging: false
+      height: 83
+      id: '1711528768556'
+      position:
+        x: 645.5
+        y: 714.5
+      positionAbsolute:
+        x: 645.5
+        y: 714.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - 6084ed3f-d100-4df2-a277-b40d639ea7c6
+        - 9a3d1ad0-80a1-4924-9ed4-b4b4713a2feb
+        desc: 'Retrieval knowledge about out products. '
+        query_variable_selector:
+        - '1711528708197'
+        - sys.query
+        retrieval_mode: single
+        selected: false
+        single_retrieval_config:
+          model:
+            completion_params: {}
+            mode: chat
+            name: gpt-3.5-turbo
+            provider: openai
+        title: 'Knowledge Retrieval '
+        type: knowledge-retrieval
+      dragging: false
+      height: 101
+      id: '1711528770201'
+      position:
+        x: 645.5
+        y: 868.6428571428572
+      positionAbsolute:
+        x: 645.5
+        y: 868.6428571428572
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: 'Sorry, I can''t help you with these questions. '
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 119
+      id: '1711528775142'
+      position:
+        x: 645.5
+        y: 1044.2142857142856
+      positionAbsolute:
+        x: 645.5
+        y: 1044.2142857142856
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1711528768556'
+          - result
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: 'Use the following context as your learned knowledge, inside <context></context>
+            XML tags.
+
+            <context>
+
+            {{#context#}}
+
+            </context>
+
+            When answer to user:
+
+            - If you don''t know, just say that you don''t know.
+
+            - If you don''t know when you are not sure, ask for clarification.
+
+            Avoid mentioning that you obtained the information from the context.
+
+            And answer according to the language of the user''s question.'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 97
+      id: '1711528802931'
+      position:
+        x: 928.5
+        y: 714.5
+      positionAbsolute:
+        x: 928.5
+        y: 714.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1711528770201'
+          - result
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: 'Use the following context as your learned knowledge, inside <context></context>
+            XML tags.
+
+            <context>
+
+            {{#context#}}
+
+            </context>
+
+            When answer to user:
+
+            - If you don''t know, just say that you don''t know.
+
+            - If you don''t know when you are not sure, ask for clarification.
+
+            Avoid mentioning that you obtained the information from the context.
+
+            And answer according to the language of the user''s question.'
+        selected: true
+        title: 'LLM '
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 97
+      id: '1711528815414'
+      position:
+        x: 928.5
+        y: 868.6428571428572
+      positionAbsolute:
+        x: 928.5
+        y: 868.6428571428572
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1711528802931.text#}}'
+        desc: ''
+        selected: false
+        title: Answer 2
+        type: answer
+        variables:
+        - value_selector:
+          - '1711528802931'
+          - text
+          variable: text
+      dragging: false
+      height: 105
+      id: '1711528833796'
+      position:
+        x: 1211.5
+        y: 714.5
+      positionAbsolute:
+        x: 1211.5
+        y: 714.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1711528815414.text#}}'
+        desc: ''
+        selected: false
+        title: Answer 3
+        type: answer
+        variables:
+        - value_selector:
+          - '1711528815414'
+          - text
+          variable: text
+      dragging: false
+      height: 105
+      id: '1711528835179'
+      position:
+        x: 1211.5
+        y: 868.6428571428572
+      positionAbsolute:
+        x: 1211.5
+        y: 868.6428571428572
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 158
+      y: -304.9999999999999
+      zoom: 0.7

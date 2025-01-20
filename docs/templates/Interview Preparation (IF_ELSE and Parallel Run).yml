@@ -1,0 +1,1182 @@
+app:
+  description: ''
+  icon: 👨‍💼
+  icon_background: '#EFF1F5'
+  mode: advanced-chat
+  name: Interview Preparation (IF/ELSE and Parallel Run)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables:
+  - description: Questions generated for the interview
+    id: 7fd2e3cf-50f0-41d4-bdec-ec13f036d510
+    name: interview_qns
+    selector:
+    - conversation
+    - interview_qns
+    value: ''
+    value_type: string
+  - description: 'Information about the company, crawed from homepage. '
+    id: 0858475c-4ec3-4909-879e-5d29147f8c3b
+    name: company_info
+    selector:
+    - conversation
+    - company_info
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724963240375-source-1724963179361-target
+      selected: false
+      source: '1724963240375'
+      sourceHandle: source
+      target: '1724963179361'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: code
+      id: 1724963179361-source-1724963278601-target
+      selected: false
+      source: '1724963179361'
+      sourceHandle: source
+      target: '1724963278601'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1724963278601-source-1724963072676-target
+      selected: false
+      source: '1724963278601'
+      sourceHandle: source
+      target: '1724963072676'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1724963072676-source-1724963334744-target
+      selected: false
+      source: '1724963072676'
+      sourceHandle: source
+      target: '1724963334744'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: code
+      id: 1724963334744-source-1724963406271-target
+      selected: false
+      source: '1724963334744'
+      sourceHandle: source
+      target: '1724963406271'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1724963406271-source-1724963438612-target
+      selected: false
+      source: '1724963406271'
+      sourceHandle: source
+      target: '1724963438612'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: assigner
+      id: 1724963438612-source-1724963505855-target
+      selected: false
+      source: '1724963438612'
+      sourceHandle: source
+      target: '1724963505855'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1724963057858-true-1724963628776-target
+      selected: false
+      source: '1724963057858'
+      sourceHandle: 'true'
+      target: '1724963628776'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1724912779215-source-1724963057858-target
+      selected: false
+      source: '1724912779215'
+      sourceHandle: source
+      target: '1724963057858'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: assigner
+        targetType: answer
+      id: 1724963505855-source-1724963776867-target
+      selected: false
+      source: '1724963505855'
+      sourceHandle: source
+      target: '1724963776867'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1724964287707-true-1724963240375-target
+      selected: false
+      source: '1724964287707'
+      sourceHandle: 'true'
+      target: '1724963240375'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1724964287707-true-1724963567827-target
+      selected: false
+      source: '1724964287707'
+      sourceHandle: 'true'
+      target: '1724963567827'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: answer
+      id: 1724963567827-source-1724963776867-target
+      selected: false
+      source: '1724963567827'
+      sourceHandle: source
+      target: '1724963776867'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1724963057858-false-1724964287707-target
+      selected: false
+      source: '1724963057858'
+      sourceHandle: 'false'
+      target: '1724964287707'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1724964287707-0dad4dbf-9e2c-46be-a133-c915c34772dc-1724965395766-target
+      selected: false
+      source: '1724964287707'
+      sourceHandle: 0dad4dbf-9e2c-46be-a133-c915c34772dc
+      target: '1724965395766'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1724964287707-0dad4dbf-9e2c-46be-a133-c915c34772dc-1724965405707-target
+      source: '1724964287707'
+      sourceHandle: 0dad4dbf-9e2c-46be-a133-c915c34772dc
+      target: '1724965405707'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1724964287707-0dad4dbf-9e2c-46be-a133-c915c34772dc-1724965407816-target
+      source: '1724964287707'
+      sourceHandle: 0dad4dbf-9e2c-46be-a133-c915c34772dc
+      target: '1724965407816'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1724964287707-0dad4dbf-9e2c-46be-a133-c915c34772dc-1724965409826-target
+      source: '1724964287707'
+      sourceHandle: 0dad4dbf-9e2c-46be-a133-c915c34772dc
+      target: '1724965409826'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724965395766-source-1725955402316-target
+      source: '1724965395766'
+      sourceHandle: source
+      target: '1725955402316'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724965405707-source-1725955402316-target
+      source: '1724965405707'
+      sourceHandle: source
+      target: '1725955402316'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724965407816-source-1725955402316-target
+      source: '1724965407816'
+      sourceHandle: source
+      target: '1725955402316'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1724965409826-source-1725955402316-target
+      source: '1724965409826'
+      sourceHandle: source
+      target: '1725955402316'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Your Role
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: role
+        - label: Company you are interviewing for
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: company
+      height: 116
+      id: '1724912779215'
+      position:
+        x: 30
+        y: 281.5
+      positionAbsolute:
+        x: 30
+        y: 281.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: 0026768d-dcad-44c6-a957-b514096b2fdf
+            value: '1'
+            varType: number
+            variable_selector:
+            - sys
+            - dialogue_count
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1724963057858'
+      position:
+        x: 334
+        y: 281.5
+      positionAbsolute:
+        x: 334
+        y: 281.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 1a8a0822-5f72-4513-871f-dc2819e50225
+          role: system
+          text: "<prompt>\nAnalyze JSON data containing URL of official website. You\
+            \ are given a JSON data that is returned from a Google search query. Your\
+            \ task is to analyze the JSON data and identify the most probable URL\
+            \ of the company's official website. \n\nReturn the URL of the company's\
+            \ official website. Make sure the output does not contain anything else\
+            \ other than the url. \n\n**Example:**\n## Example Input\n\n```json\n\
+            {\n  \"query\": \"Google\",\n  \"results\": [\n    {\n      \"title\"\
+            : \"Google\",\n      \"url\": \"https://www.google.com/\"\n    },\n  \
+            \  {\n      \"title\": \"Google - About Google\",\n      \"url\": \"https://about.google/\"\
+            \n    }\n  ]\n}\n```\n## Example Output\nhttps://www.google.com/\n\n</prompt>"
+        - id: 7e785114-f076-4273-8133-5cada69bf0cd
+          role: user
+          text: 'Goole search result: {{#1724963278601.result#}}'
+        selected: false
+        title: Filter Search
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724963072676'
+      position:
+        x: 1854
+        y: 478.5
+      positionAbsolute:
+        x: 1854
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"1.
+          Confirm role and company the candidate is interviewing for.  ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1724963084766'
+      position:
+        x: 609.6683492027965
+        y: 143.5752745117864
+      positionAbsolute:
+        x: 609.6683492027965
+        y: 143.5752745117864
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        desc: ''
+        provider_id: google
+        provider_name: google
+        provider_type: builtin
+        selected: false
+        title: GoogleSearch
+        tool_configurations: {}
+        tool_label: GoogleSearch
+        tool_name: google_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1724963240375.text#}}'
+        type: tool
+      height: 54
+      id: '1724963179361'
+      position:
+        x: 1246
+        y: 478.5
+      positionAbsolute:
+        x: 1246
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: ee4d175e-1ca2-4d98-b3d5-14845a24dbb4
+          role: system
+          text: "<instructions>\n1. Read the user's query carefully to understand\
+            \ the main topic or subject they are interested in.\n2. Identify the key\
+            \ terms or phrases within the user's query that best represent the main\
+            \ topic.\n3. Simplify the user's query by removing any unnecessary words\
+            \ or phrases that do not contribute to the main topic.\n4. Generate a\
+            \ concise search query that captures the essence of the user's interest,\
+            \ using the identified key terms or phrases.\n5. Ensure that the output\
+            \ is a clear and direct search query suitable for a Google search.\n6.\
+            \ The output should not contain any XML tags or additional formatting.\n\
+            </instructions>\n\n<examples>\n<example>\n  <input>\n    I want to know\
+            \ about nvidia\n  </input>\n  <output>\n    nvidia\n  </output>\n</example>\n\
+            \n<example>\n  <input>\n    Can you tell me more about the history of\
+            \ the internet?\n  </input>\n  <output>\n    history of the internet\n\
+            \  </output>\n</example>\n\n<example>\n  <input>\n    What are the health\
+            \ benefits of green tea?\n  </input>\n  <output>\n    health benefits\
+            \ of green tea\n  </output>\n</example>\n</examples>"
+        - id: 34a949ff-f31a-4a3b-b999-a6ce16a06f0d
+          role: user
+          text: '{{#1724912779215.company#}}'
+        selected: false
+        title: Generate Search Query
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724963240375'
+      position:
+        x: 942
+        y: 478.5
+      positionAbsolute:
+        x: 942
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1):\n    import json\n    data = json.dumps(arg1)\n   \
+          \ return {\n        'result': data \n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Code
+        type: code
+        variables:
+        - value_selector:
+          - '1724963179361'
+          - json
+          variable: arg1
+      height: 54
+      id: '1724963278601'
+      position:
+        x: 1550
+        y: 478.5
+      positionAbsolute:
+        x: 1550
+        y: 478.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: firecrawl
+        provider_name: firecrawl
+        provider_type: builtin
+        selected: false
+        title: Crawl
+        tool_configurations:
+          allowBackwardCrawling: 0
+          allowExternalContentLinks: 0
+          excludes: null
+          headers: null
+          ignoreSitemap: 0
+          includeHtml: 0
+          includeRawHtml: 0
+          includes: null
+          limit: 1
+          maxDepth: 2
+          mode: default
+          onlyIncludeTags: null
+          onlyMainContent: 1
+          removeTags: null
+          replaceAllPathsWithAbsolutePaths: 0
+          returnOnlyUrls: 0
+          screenshot: 0
+          waitFor: null
+          wait_for_results: 1
+        tool_label: Crawl
+        tool_name: crawl
+        tool_parameters:
+          url:
+            type: mixed
+            value: '{{#1724963072676.text#}}'
+        type: tool
+      height: 558
+      id: '1724963334744'
+      position:
+        x: 2158
+        y: 478.5
+      positionAbsolute:
+        x: 2158
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> dict:\n    import json\n    data = json.dumps(arg1)\n\
+          \    result = data[:8000] if len(data) > 8000 else data\n    return {\n\
+          \        \"result\": result,\n    }"
+        code_language: python3
+        desc: Trim if longer than 8000
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: json2str
+        type: code
+        variables:
+        - value_selector:
+          - '1724963334744'
+          - json
+          variable: arg1
+      height: 82
+      id: '1724963406271'
+      position:
+        x: 2462
+        y: 478.5
+      positionAbsolute:
+        x: 2462
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 81eedfc4-5963-466b-8b58-9633bd0351d4
+          role: system
+          text: "<instructions>\n1. Access the main page of the company whose information\
+            \ needs to be summarized.\n2. Extract key information about the company\
+            \ with no more than 150 words, including but not limited to:\n   - Company\
+            \ name\n   - Industry or sector\n   - Key products or services\n   - Mission\
+            \ or vision statement\n   - Key executives or leadership team\n   - Headquarters\
+            \ location\n   - Year founded\n   - Any notable achievements or milestones\n\
+            3. Summarize the extracted information in a concise and coherent manner.\n\
+            4. Ensure that the summary is clear, informative, and free of any unnecessary\
+            \ details.\n5. The output should be in plain text and should not contain\
+            \ any XML tags.\n</instructions>\n\n<examples>\n<example>\n<instructions>\n\
+            Input: \nMain page of Company A\n\nOutput:\nCompany A is a leading firm\
+            \ in the technology sector, specializing in innovative software solutions.\
+            \ Founded in 2005, the company is headquartered in San Francisco, California.\
+            \ Their mission is to revolutionize the tech industry with cutting-edge\
+            \ products. Key executives include CEO John Doe and CTO Jane Smith. Notable\
+            \ achievements include being listed in the Fortune 500 and winning the\
+            \ Tech Innovation Award in 2020.\n</instructions>\n</example>\n\n<example>\n\
+            <instructions>\nInput: \nMain page of Company B\n\nOutput:\nCompany B\
+            \ operates in the healthcare industry, providing top-notch medical equipment\
+            \ and services. Established in 1998, the company is based in New York\
+            \ City. Their vision is to enhance global health through advanced technology.\
+            \ The leadership team is headed by CEO Alice Johnson and COO Robert Brown.\
+            \ Significant milestones include the development of a groundbreaking MRI\
+            \ machine and receiving the HealthTech Excellence Award in 2018.\n</instructions>\n\
+            </example>\n\n<example>\n<instructions>\nInput: \nMain page of Company\
+            \ C\n\nOutput:\nCompany C is a prominent player in the automotive industry,\
+            \ known for manufacturing high-performance electric vehicles. Founded\
+            \ in 2010, the company is located in Detroit, Michigan. Their mission\
+            \ is to drive the future of transportation with sustainable energy solutions.\
+            \ The executive team includes CEO Michael Green and CFO Laura White. Key\
+            \ achievements include launching the first fully autonomous electric car\
+            \ and being named Car Manufacturer of the Year in 2021.\n</instructions>\n\
+            </example>\n</examples>"
+        - id: 02f7eb65-0f78-47cf-95ed-4f725a7728c8
+          role: user
+          text: 'Company info: {{#1724963406271.result#}}'
+        selected: false
+        title: Summary Company info
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724963438612'
+      position:
+        x: 2766
+        y: 478.5
+      positionAbsolute:
+        x: 2766
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        assigned_variable_selector:
+        - conversation
+        - company_info
+        desc: ''
+        input_variable_selector:
+        - '1724963438612'
+        - text
+        selected: false
+        title: Variable Assigner
+        type: assigner
+        write_mode: over-write
+      height: 132
+      id: '1724963505855'
+      position:
+        x: 3070
+        y: 478.5
+      positionAbsolute:
+        x: 3070
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Gathering information about your company from the internet.......
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 120
+      id: '1724963567827'
+      position:
+        x: 3070
+        y: 1286
+      positionAbsolute:
+        x: 3070
+        y: 1286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Can you please comfirm you are interviewing for {{#1724912779215.role#}}
+          at {{#1724912779215.company#}}? '
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 142
+      id: '1724963628776'
+      position:
+        x: 638
+        y: 281.5
+      positionAbsolute:
+        x: 638
+        y: 281.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1724963438612.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 107
+      id: '1724963776867'
+      position:
+        x: 3374
+        y: 478.5
+      positionAbsolute:
+        x: 3374
+        y: 478.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: empty
+            id: 5f77d9ff-cfe0-4ba4-bd78-310750cc8db0
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - company_info
+          id: 'true'
+          logical_operator: and
+        - case_id: 0dad4dbf-9e2c-46be-a133-c915c34772dc
+          conditions:
+          - comparison_operator: empty
+            id: acabfa1b-a2c6-4f52-aa84-aee57d1b858b
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - interview_qns
+          id: 0dad4dbf-9e2c-46be-a133-c915c34772dc
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 174
+      id: '1724964287707'
+      position:
+        x: 638
+        y: 462.5
+      positionAbsolute:
+        x: 638
+        y: 462.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: c81af202-eae2-43a2-9dd9-a80a27b8877c
+          role: system
+          text: "<instructions>\nGenerate a potential interview question for {{#1724912779215.role#}}\
+            \ and a {{#1724912779215.company#}} that has does the following.\n{{#conversation.company_info#}}\
+            \ \n\nFollow these steps:\n\n1. Identify the key responsibilities and\
+            \ skills required for the role within the company that specializes in\
+            \ xxx.\n2. Consider the unique aspects of the company and its specialization\
+            \ in xxx.\n3. Formulate a question that assesses the candidate's knowledge,\
+            \ experience, and suitability for the role in the context of the company's\
+            \ specialization.\n4. Ensure the question is open-ended to allow the candidate\
+            \ to provide a detailed response.\n5. Avoid using any XML tags and output\
+            \ only the question and nothing else in the output.\n\nThe goal is to\
+            \ create a question that not only evaluates the candidate's technical\
+            \ skills but also their understanding of the company's niche and how they\
+            \ can contribute to its success.\n\n</instructions>\n\n<examples>\n<example>\n\
+            Input: \nRole: Data Scientist\nCompany Specialization: Healthcare Analytics\n\
+            \nOutput: \nCan you describe a project where you used data analytics to\
+            \ improve healthcare outcomes? What challenges did you face and how did\
+            \ you overcome them?\n\n</example>\n\n<>\n<example input> \nRole: Software\
+            \ Engineer\nCompany Specialization: Financial Technology (FinTech)\n\n\
+            <example output> \nHow have you previously contributed to the development\
+            \ of secure and scalable financial applications? Can you provide an example\
+            \ of a specific project and the technologies you used?\n\n</>\n\n<>\n\
+            <example input> \nRole: Marketing Manager\nCompany Specialization: Eco-friendly\
+            \ Consumer Products\n\n<example output>\nWhat strategies have you implemented\
+            \ in the past to successfully market eco-friendly products? How did you\
+            \ measure the effectiveness of these strategies?\n\n</>\n</examples>"
+        selected: false
+        title: LLM 1
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724965395766'
+      position:
+        x: 942
+        y: 615.5
+      positionAbsolute:
+        x: 942
+        y: 615.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: ab7d4c1b-4813-4b8b-8a8a-d8db84ce2f61
+          role: system
+          text: "<instructions>\nGenerate a potential interview question for {{#1724912779215.role#}}\
+            \ and a {{#1724912779215.company#}} that has does the following.\n{{#conversation.company_info#}}\
+            \ \n\nFollow these steps:\n\n1. Identify the key responsibilities and\
+            \ skills required for the role within the company that specializes in\
+            \ xxx.\n2. Consider the unique aspects of the company and its specialization\
+            \ in xxx.\n3. Formulate a question that assesses the candidate's knowledge,\
+            \ experience, and suitability for the role in the context of the company's\
+            \ specialization.\n4. Ensure the question is open-ended to allow the candidate\
+            \ to provide a detailed response.\n5. Avoid using any XML tags and output\
+            \ only the question and nothing else in the output.\n\nThe goal is to\
+            \ create a question that not only evaluates the candidate's technical\
+            \ skills but also their understanding of the company's niche and how they\
+            \ can contribute to its success.\n\n</instructions>\n\n<examples>\n<example>\n\
+            Input: \nRole: Data Scientist\nCompany Specialization: Healthcare Analytics\n\
+            \nOutput: \nCan you describe a project where you used data analytics to\
+            \ improve healthcare outcomes? What challenges did you face and how did\
+            \ you overcome them?\n\n</example>\n\n<>\n<example input> \nRole: Software\
+            \ Engineer\nCompany Specialization: Financial Technology (FinTech)\n\n\
+            <example output> \nHow have you previously contributed to the development\
+            \ of secure and scalable financial applications? Can you provide an example\
+            \ of a specific project and the technologies you used?\n\n</>\n\n<>\n\
+            <example input> \nRole: Marketing Manager\nCompany Specialization: Eco-friendly\
+            \ Consumer Products\n\n<example output>\nWhat strategies have you implemented\
+            \ in the past to successfully market eco-friendly products? How did you\
+            \ measure the effectiveness of these strategies?\n\n</>\n</examples>"
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724965405707'
+      position:
+        x: 942
+        y: 752.5
+      positionAbsolute:
+        x: 942
+        y: 752.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 89b9a36d-fbe0-4359-8dbc-cbeac27fc8dc
+          role: system
+          text: "<instructions>\nGenerate a potential interview question for {{#1724912779215.role#}}\
+            \ and a {{#1724912779215.company#}} that has does the following.\n{{#conversation.company_info#}}\
+            \ \n\nFollow these steps:\n\n1. Identify the key responsibilities and\
+            \ skills required for the role within the company that specializes in\
+            \ xxx.\n2. Consider the unique aspects of the company and its specialization\
+            \ in xxx.\n3. Formulate a question that assesses the candidate's knowledge,\
+            \ experience, and suitability for the role in the context of the company's\
+            \ specialization.\n4. Ensure the question is open-ended to allow the candidate\
+            \ to provide a detailed response.\n5. Avoid using any XML tags and output\
+            \ only the question and nothing else in the output.\n\nThe goal is to\
+            \ create a question that not only evaluates the candidate's technical\
+            \ skills but also their understanding of the company's niche and how they\
+            \ can contribute to its success.\n\n</instructions>\n\n<examples>\n<example>\n\
+            Input: \nRole: Data Scientist\nCompany Specialization: Healthcare Analytics\n\
+            \nOutput: \nCan you describe a project where you used data analytics to\
+            \ improve healthcare outcomes? What challenges did you face and how did\
+            \ you overcome them?\n\n</example>\n\n<>\n<example input> \nRole: Software\
+            \ Engineer\nCompany Specialization: Financial Technology (FinTech)\n\n\
+            <example output> \nHow have you previously contributed to the development\
+            \ of secure and scalable financial applications? Can you provide an example\
+            \ of a specific project and the technologies you used?\n\n</>\n\n<>\n\
+            <example input> \nRole: Marketing Manager\nCompany Specialization: Eco-friendly\
+            \ Consumer Products\n\n<example output>\nWhat strategies have you implemented\
+            \ in the past to successfully market eco-friendly products? How did you\
+            \ measure the effectiveness of these strategies?\n\n</>\n</examples>"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724965407816'
+      position:
+        x: 942
+        y: 889.5
+      positionAbsolute:
+        x: 942
+        y: 889.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: d5cb507a-df91-4414-84d5-d3608c5a9e49
+          role: system
+          text: "<instructions>\nGenerate a potential interview question for {{#1724912779215.role#}}\
+            \ and a {{#1724912779215.company#}} that has does the following.\n{{#conversation.company_info#}}\
+            \ \n\nFollow these steps:\n\n1. Identify the key responsibilities and\
+            \ skills required for the role within the company that specializes in\
+            \ xxx.\n2. Consider the unique aspects of the company and its specialization\
+            \ in xxx.\n3. Formulate a question that assesses the candidate's knowledge,\
+            \ experience, and suitability for the role in the context of the company's\
+            \ specialization.\n4. Ensure the question is open-ended to allow the candidate\
+            \ to provide a detailed response.\n5. Avoid using any XML tags and output\
+            \ only the question and nothing else in the output.\n\nThe goal is to\
+            \ create a question that not only evaluates the candidate's technical\
+            \ skills but also their understanding of the company's niche and how they\
+            \ can contribute to its success.\n\n</instructions>\n\n<examples>\n<example>\n\
+            Input: \nRole: Data Scientist\nCompany Specialization: Healthcare Analytics\n\
+            \nOutput: \nCan you describe a project where you used data analytics to\
+            \ improve healthcare outcomes? What challenges did you face and how did\
+            \ you overcome them?\n\n</example>\n\n<>\n<example input> \nRole: Software\
+            \ Engineer\nCompany Specialization: Financial Technology (FinTech)\n\n\
+            <example output> \nHow have you previously contributed to the development\
+            \ of secure and scalable financial applications? Can you provide an example\
+            \ of a specific project and the technologies you used?\n\n</>\n\n<>\n\
+            <example input> \nRole: Marketing Manager\nCompany Specialization: Eco-friendly\
+            \ Consumer Products\n\n<example output>\nWhat strategies have you implemented\
+            \ in the past to successfully market eco-friendly products? How did you\
+            \ measure the effectiveness of these strategies?\n\n</>\n</examples>"
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1724965409826'
+      position:
+        x: 942
+        y: 1026.5
+      positionAbsolute:
+        x: 942
+        y: 1026.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '|No. |Question|
+
+          |---|---|
+
+          |1|{{#1724965395766.text#}}|
+
+          |2|{{#1724965405707.text#}}|
+
+          |3|{{#1724965407816.text#}}|
+
+          |4|{{#1724965409826.text#}}|'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 180
+      id: '1725955402316'
+      position:
+        x: 1399.7142857142858
+        y: 747.2142857142857
+      positionAbsolute:
+        x: 1399.7142857142858
+        y: 747.2142857142857
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"2.
+          Gather information online about the candidate''s company. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ' (1)'
+        type: ''
+        width: 240
+      height: 88
+      id: '17259898297980'
+      position:
+        x: 1240.4285714285716
+        y: 357.14285714285734
+      positionAbsolute:
+        x: 1240.4285714285716
+        y: 357.14285714285734
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: Dify
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"3.
+          Generate interview questions. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 240
+      height: 88
+      id: '17259899459350'
+      position:
+        x: 638
+        y: 764.2857142857144
+      positionAbsolute:
+        x: 638
+        y: 764.2857142857144
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: 'Dify '
+        desc: ''
+        height: 152
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          chatbot will confirm the position and company you are interviewing for.
+          If you responded, it will continue to gather information online about the
+          company. Then generate the interview questions. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 302
+      height: 152
+      id: '1726021417762'
+      position:
+        x: 30
+        y: 455.954115197638
+      positionAbsolute:
+        x: 30
+        y: 455.954115197638
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 302
+    viewport:
+      x: -6.412254776764257
+      y: -92.25907746222654
+      zoom: 1.1379286027504

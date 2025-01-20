@@ -1,0 +1,1236 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 'Email Assistant Workflow '
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: question-classifier
+      id: 1711511281652-1711512802873
+      source: '1711511281652'
+      sourceHandle: source
+      target: '1711512802873'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: question-classifier
+      id: 1711512802873-1711512837494
+      source: '1711512802873'
+      sourceHandle: '1711512813038'
+      target: '1711512837494'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512802873-1711512911454
+      source: '1711512802873'
+      sourceHandle: '1711512811520'
+      target: '1711512911454'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512802873-1711512914870
+      source: '1711512802873'
+      sourceHandle: '1711512812031'
+      target: '1711512914870'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512802873-1711512916516
+      source: '1711512802873'
+      sourceHandle: '1711512812510'
+      target: '1711512916516'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512837494-1711512924231
+      source: '1711512837494'
+      sourceHandle: '1711512846439'
+      target: '1711512924231'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512837494-1711512926020
+      source: '1711512837494'
+      sourceHandle: '1711512847112'
+      target: '1711512926020'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512837494-1711512927569
+      source: '1711512837494'
+      sourceHandle: '1711512847641'
+      target: '1711512927569'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512837494-1711512929190
+      source: '1711512837494'
+      sourceHandle: '1711512848120'
+      target: '1711512929190'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512837494-1711512930700
+      source: '1711512837494'
+      sourceHandle: '1711512848616'
+      target: '1711512930700'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512911454-1711513015189
+      source: '1711512911454'
+      sourceHandle: source
+      target: '1711513015189'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512914870-1711513017096
+      source: '1711512914870'
+      sourceHandle: source
+      target: '1711513017096'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512916516-1711513018759
+      source: '1711512916516'
+      sourceHandle: source
+      target: '1711513018759'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512924231-1711513020857
+      source: '1711512924231'
+      sourceHandle: source
+      target: '1711513020857'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512926020-1711513022516
+      source: '1711512926020'
+      sourceHandle: source
+      target: '1711513022516'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512927569-1711513024315
+      source: '1711512927569'
+      sourceHandle: source
+      target: '1711513024315'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512929190-1711513025732
+      source: '1711512929190'
+      sourceHandle: source
+      target: '1711513025732'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711512930700-1711513027347
+      source: '1711512930700'
+      sourceHandle: source
+      target: '1711513027347'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513015189-1711513029058
+      source: '1711513015189'
+      sourceHandle: source
+      target: '1711513029058'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513017096-1711513030924
+      source: '1711513017096'
+      sourceHandle: source
+      target: '1711513030924'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513018759-1711513032459
+      source: '1711513018759'
+      sourceHandle: source
+      target: '1711513032459'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513020857-1711513034850
+      source: '1711513020857'
+      sourceHandle: source
+      target: '1711513034850'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513022516-1711513036356
+      source: '1711513022516'
+      sourceHandle: source
+      target: '1711513036356'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513024315-1711513037973
+      source: '1711513024315'
+      sourceHandle: source
+      target: '1711513037973'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513025732-1711513039350
+      source: '1711513025732'
+      sourceHandle: source
+      target: '1711513039350'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513027347-1711513041219
+      source: '1711513027347'
+      sourceHandle: source
+      target: '1711513041219'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: question-classifier
+        targetType: llm
+      id: 1711512802873-1711513940609
+      source: '1711512802873'
+      sourceHandle: '1711513927279'
+      target: '1711513940609'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711513940609-1711513967853
+      source: '1711513940609'
+      sourceHandle: source
+      target: '1711513967853'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711513967853-1711513974643
+      source: '1711513967853'
+      sourceHandle: source
+      target: '1711513974643'
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: true
+        title: Start
+        type: start
+        variables:
+        - label: Email
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: Input_Text
+        - label: What do you need to do? (Summarize / Reply / Write / Improve)
+          max_length: 48
+          options:
+          - Summarize
+          - 'Reply '
+          - Write a email
+          - 'Improve writings '
+          required: true
+          type: select
+          variable: user_request
+        - label: 'How do you want it to be polished? (Optional) '
+          max_length: 48
+          options:
+          - 'Imporve writing and clarity '
+          - Shorten
+          - 'Lengthen '
+          - 'Simplify '
+          - Rewrite in my voice
+          required: false
+          type: select
+          variable: how_polish
+      dragging: false
+      height: 141
+      id: '1711511281652'
+      position:
+        x: 79.5
+        y: 409.5
+      positionAbsolute:
+        x: 79.5
+        y: 409.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        classes:
+        - id: '1711512811520'
+          name: Summarize
+        - id: '1711512812031'
+          name: Reply to emails
+        - id: '1711512812510'
+          name: Help me write the email
+        - id: '1711512813038'
+          name: Improve writings or polish
+        - id: '1711513927279'
+          name: Grammer check
+        desc: 'Classify users'' demands. '
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        query_variable_selector:
+        - '1711511281652'
+        - user_request
+        selected: false
+        title: 'Question Classifier '
+        topics: []
+        type: question-classifier
+      dragging: false
+      height: 333
+      id: '1711512802873'
+      position:
+        x: 362.5
+        y: 409.5
+      positionAbsolute:
+        x: 362.5
+        y: 409.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        classes:
+        - id: '1711512846439'
+          name: 'Improve writing and clarity '
+        - id: '1711512847112'
+          name: 'Shorten '
+        - id: '1711512847641'
+          name: 'Lengthen '
+        - id: '1711512848120'
+          name: 'Simplify '
+        - id: '1711512848616'
+          name: Rewrite in my voice
+        desc: 'Improve writings. '
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        query_variable_selector:
+        - '1711511281652'
+        - how_polish
+        selected: false
+        title: 'Question Classifier '
+        topics: []
+        type: question-classifier
+      dragging: false
+      height: 333
+      id: '1711512837494'
+      position:
+        x: 645.5
+        y: 409.5
+      positionAbsolute:
+        x: 645.5
+        y: 409.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Summary
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Summary the email for me. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512911454'
+      position:
+        x: 645.5
+        y: 1327.5
+      positionAbsolute:
+        x: 645.5
+        y: 1327.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Reply
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Rely the emails for me, in my own voice. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512914870'
+      position:
+        x: 645.5
+        y: 1518.5
+      positionAbsolute:
+        x: 645.5
+        y: 1518.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Turn idea into email
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Turn my idea into email. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512916516'
+      position:
+        x: 645.5
+        y: 1709.5
+      positionAbsolute:
+        x: 645.5
+        y: 1709.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 'Improve the clarity. '
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: "<Task> Imporve the clarity of the email for me. \n<Email>{{#1711511281652.Input_Text#}}\n\
+            <Result>"
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512924231'
+      position:
+        x: 928.5
+        y: 409.5
+      positionAbsolute:
+        x: 928.5
+        y: 409.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 'Shorten. '
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Shorten the email for me. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512926020'
+      position:
+        x: 928.5
+        y: 600.5
+      positionAbsolute:
+        x: 928.5
+        y: 600.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 'Lengthen '
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Lengthen the email for me. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512927569'
+      position:
+        x: 928.5
+        y: 791.5
+      positionAbsolute:
+        x: 928.5
+        y: 791.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Simplify
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Simplify the email for me. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512929190'
+      position:
+        x: 928.5
+        y: 982.5
+      positionAbsolute:
+        x: 928.5
+        y: 982.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Rewrite in my voice
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: '<Task> Rewrite the email for me. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711512930700'
+      position:
+        x: 928.5
+        y: 1173.5
+      positionAbsolute:
+        x: 928.5
+        y: 1173.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512911454'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513015189'
+      position:
+        x: 928.5
+        y: 1327.5
+      positionAbsolute:
+        x: 928.5
+        y: 1327.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 2
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512914870'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513017096'
+      position:
+        x: 928.5
+        y: 1518.5
+      positionAbsolute:
+        x: 928.5
+        y: 1518.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 3
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512916516'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513018759'
+      position:
+        x: 928.5
+        y: 1709.5
+      positionAbsolute:
+        x: 928.5
+        y: 1709.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 4
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512924231'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513020857'
+      position:
+        x: 1211.5
+        y: 409.5
+      positionAbsolute:
+        x: 1211.5
+        y: 409.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 5
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512926020'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513022516'
+      position:
+        x: 1211.5
+        y: 600.5
+      positionAbsolute:
+        x: 1211.5
+        y: 600.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 6
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512927569'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513024315'
+      position:
+        x: 1211.5
+        y: 791.5
+      positionAbsolute:
+        x: 1211.5
+        y: 791.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 7
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512929190'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513025732'
+      position:
+        x: 1211.5
+        y: 982.5
+      positionAbsolute:
+        x: 1211.5
+        y: 982.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 8
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711512930700'
+          - text
+          variable: arg1
+      dragging: false
+      height: 53
+      id: '1711513027347'
+      position:
+        x: 1211.5
+        y: 1173.5
+      positionAbsolute:
+        x: 1211.5
+        y: 1173.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512911454'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513029058'
+      position:
+        x: 1211.5
+        y: 1327.5
+      positionAbsolute:
+        x: 1211.5
+        y: 1327.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512914870'
+          - text
+          variable: text
+        selected: false
+        title: End 2
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513030924'
+      position:
+        x: 1211.5
+        y: 1518.5
+      positionAbsolute:
+        x: 1211.5
+        y: 1518.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512916516'
+          - text
+          variable: text
+        selected: false
+        title: End 3
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513032459'
+      position:
+        x: 1211.5
+        y: 1709.5
+      positionAbsolute:
+        x: 1211.5
+        y: 1709.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512924231'
+          - text
+          variable: text
+        selected: false
+        title: End 4
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513034850'
+      position:
+        x: 1494.5
+        y: 409.5
+      positionAbsolute:
+        x: 1494.5
+        y: 409.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512926020'
+          - text
+          variable: text
+        selected: false
+        title: End 5
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513036356'
+      position:
+        x: 1494.5
+        y: 600.5
+      positionAbsolute:
+        x: 1494.5
+        y: 600.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512927569'
+          - text
+          variable: text
+        selected: false
+        title: End 6
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513037973'
+      position:
+        x: 1494.5
+        y: 791.5
+      positionAbsolute:
+        x: 1494.5
+        y: 791.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512929190'
+          - text
+          variable: text
+        selected: false
+        title: End 7
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513039350'
+      position:
+        x: 1494.5
+        y: 982.5
+      positionAbsolute:
+        x: 1494.5
+        y: 982.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711512930700'
+          - text
+          variable: text
+        selected: false
+        title: End 8
+        type: end
+      dragging: false
+      height: 89
+      id: '1711513041219'
+      position:
+        x: 1494.5
+        y: 1173.5
+      positionAbsolute:
+        x: 1494.5
+        y: 1173.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Grammer Check
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: 'Please check grammer of my email and comment on the grammer. <Email>{{#1711511281652.Input_Text#}}
+
+            <Result>'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      dragging: false
+      height: 127
+      id: '1711513940609'
+      position:
+        x: 645.5
+        y: 1900.5
+      positionAbsolute:
+        x: 645.5
+        y: 1900.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1 }}'
+        title: Template 9
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711513940609'
+          - text
+          variable: arg1
+      height: 53
+      id: '1711513967853'
+      position:
+        x: 928.5
+        y: 1900.5
+      positionAbsolute:
+        x: 928.5
+        y: 1900.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711513940609'
+          - text
+          variable: text
+        selected: false
+        title: End 9
+        type: end
+      height: 89
+      id: '1711513974643'
+      position:
+        x: 1211.5
+        y: 1900.5
+      positionAbsolute:
+        x: 1211.5
+        y: 1900.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.7

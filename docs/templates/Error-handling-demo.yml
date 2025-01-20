@@ -1,0 +1,398 @@
+app:
+  description: ''
+  icon: 🔨
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Error-handling-demo
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1732007415808-source-1733478262179-target
+      source: '1732007415808'
+      sourceHandle: source
+      target: '1733478262179'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1733478262179-source-1733478343153-target
+      source: '1733478262179'
+      sourceHandle: source
+      target: '1733478343153'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: end
+      id: 1733478785564-source-1733478413552-target
+      source: '1733478785564'
+      sourceHandle: source
+      target: '1733478413552'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1733479010027-source-17334785192390-target
+      source: '1733479010027'
+      sourceHandle: source
+      target: '17334785192390'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1733478343153-source-1733478785564-target
+      source: '1733478343153'
+      sourceHandle: source
+      target: '1733478785564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1733478343153-fail-branch-1733479010027-target
+      source: '1733478343153'
+      sourceHandle: fail-branch
+      target: '1733479010027'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 17334785192390-source-1733478785564-target
+      selected: false
+      source: '17334785192390'
+      sourceHandle: source
+      target: '1733478785564'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: llm_string
+          max_length: 10000
+          options: []
+          required: true
+          type: paragraph
+          variable: llm_string
+      height: 90
+      id: '1732007415808'
+      position:
+        x: 28.586897189782576
+        y: 258.434485948913
+      positionAbsolute:
+        x: 28.586897189782576
+        y: 258.434485948913
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20241022
+          provider: anthropic
+        prompt_template:
+        - id: 362ad4bd-b8b9-4921-b81f-fc285eb76915
+          role: system
+          text: You are a teaching assistant. According to the user's request, only
+            output an example code in correct or incorrect JSON format.
+        - id: 5f643c70-0cbe-4ad0-b0c5-c48ddcc6630b
+          role: user
+          text: This is the user's request:{{#1732007415808.llm_string#}}
+        selected: true
+        title: Generate wrong JSON.
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1733478262179'
+      position:
+        x: 370.4627858653985
+        y: 258.434485948913
+      positionAbsolute:
+        x: 370.4627858653985
+        y: 258.434485948913
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(json_str: str) -> dict:\n    obj = json.loads(json_str)\n\
+          \    return {'result': obj}"
+        code_language: python3
+        desc: ''
+        error_strategy: fail-branch
+        outputs:
+          result:
+            children: null
+            type: object
+        selected: false
+        title: Simulate JSON escaping
+        type: code
+        variables:
+        - value_selector:
+          - '1733478262179'
+          - text
+          variable: json_str
+      height: 90
+      id: '1733478343153'
+      position:
+        x: 703.0873018641282
+        y: 258.434485948913
+      positionAbsolute:
+        x: 703.0873018641282
+        y: 258.434485948913
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733478262179'
+          - text
+          variable: text1
+        - value_selector:
+          - '1733479010027'
+          - text
+          variable: text2
+        - value_selector:
+          - '1733478343153'
+          - error_message
+          variable: error_message
+        - value_selector:
+          - '1733478343153'
+          - error_type
+          variable: error_type
+        - value_selector:
+          - '1733478785564'
+          - output
+          variable: output
+        selected: false
+        title: 'End '
+        type: end
+      height: 194
+      id: '1733478413552'
+      position:
+        x: 2080.5186538686958
+        y: 258.434485948913
+      positionAbsolute:
+        x: 2080.5186538686958
+        y: 258.434485948913
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(json_str: str) -> dict:\n    obj = json.loads(json_str)\n\
+          \    return {'result': obj}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: object
+        selected: false
+        title: Secondary execution
+        type: code
+        variables:
+        - value_selector:
+          - '1733479010027'
+          - text
+          variable: json_str
+      height: 54
+      id: '17334785192390'
+      position:
+        x: 1373.8226179034425
+        y: 424.5052623051213
+      positionAbsolute:
+        x: 1373.8226179034425
+        y: 424.5052623051213
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: object
+        selected: false
+        title: Variable Aggregator
+        type: variable-aggregator
+        variables:
+        - - '1733478343153'
+          - result
+        - - '17334785192390'
+          - result
+      height: 130
+      id: '1733478785564'
+      position:
+        x: 1707.276616168043
+        y: 258.434485948913
+      positionAbsolute:
+        x: 1707.276616168043
+        y: 258.434485948913
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20241022
+          provider: anthropic
+        prompt_template:
+        - id: 4451cc50-f360-4d42-a925-9cfb98d3babc
+          role: system
+          text: You are a JSON repair expert.
+        - id: 9e04c9bc-db50-4804-9562-7505b521eebc
+          role: user
+          text: Based on the {{#1733478343153.error_type#}} and {{#1733478343153.error_message#}}
+            from the first version (x), your response should only contain the corrected
+            JSON for repairing {{#1733478262179.text#}}
+        selected: false
+        title: JSON repair
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1733479010027'
+      position:
+        x: 1021.5785962468701
+        y: 424.5052623051213
+      positionAbsolute:
+        x: 1021.5785962468701
+        y: 424.5052623051213
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Yevanchen
+        desc: ''
+        height: 215
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          demonstration generates an incorrect JSON format to simulate the situation
+          where some LLM cannot output well-formatted JSON. In the fail branch, the
+          error type and error message are used to repair it with LLM. Finally, the
+          variable aggregator is used to merge it into the main branch for normal
+          use. The variable aggregator is used here because the fail branch is actually
+          an embedded if-else branch. When downstream nodes in dify need to reference
+          multiple possible conditional branches with values from upstream, the variable
+          aggregator must be used to uniformly aggregate them before they can be referenced.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 503
+      height: 215
+      id: '1733906923641'
+      position:
+        x: 28.586897189782576
+        y: -38.59155464652039
+      positionAbsolute:
+        x: 28.586897189782576
+        y: -38.59155464652039
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 503
+    viewport:
+      x: -29.155389730257014
+      y: 219.15776537272043
+      zoom: 1.206393422837058

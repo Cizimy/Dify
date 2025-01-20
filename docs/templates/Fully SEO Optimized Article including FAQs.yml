@@ -1,0 +1,131 @@
+app:
+  description: ''
+  icon: 📑
+  icon_background: '#D5F5F6'
+  mode: completion
+  name: Fully SEO Optimized Article including FAQs
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      frequency_penalty: 0
+      max_tokens: 4096
+      presence_penalty: 0
+      stop: []
+      temperature: 0
+      top_p: 1
+    mode: chat
+    name: gpt-3.5-turbo-0125
+    provider: openai
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: "## Job Description: Fully SEO Optimized Article including FAQ's\n##\
+    \ Workflow\nFirst Step. Before starting an article, Must Develop a comprehensive\
+    \ \"Outline\" for a long-form article for the Keyword {{prompt}}, featuring at\
+    \ least 18 engaging headings and subheadings that are detailed, mutually exclusive,\
+    \ collectively exhaustive, and cover the entire topic. Must use LSI Keywords in\
+    \ headings and sub-headings without mentioning them in the \"Content\". Must show\
+    \ these \"Outlines\" in a table. \n\nSecond Step Using markdown formatting, act\
+    \ as an Expert Article Writer and write a fully detailed, long-form, 100% unique,\
+    \ creative, and human-like informational article of a minimum of 2000 words in\
+    \ Grade 7 English, using headings and sub-headings. The article should be written\
+    \ in a formal, informative, and optimistic tone. \nMust Read all the information\
+    \ below. Use {{target_language}} for the keyword \"{{prompt}}\" and write at least\
+    \ 400–500 words of engaging paragraph under each and every Heading. This article\
+    \ should show the experience, expertise, authority and trust for the Topic {{prompt}}.\
+    \ Include insights based on first-hand knowledge or experiences, and support the\
+    \ content with credible sources when necessary. Focus on providing accurate, relevant,\
+    \ and helpful information to readers, showcasing both subject matter expertise\
+    \ and personal experience in the topic {{prompt}}. Write engaging, unique, and\
+    \ plagiarism-free content that incorporates a human-like style, and simple English\
+    \ and bypass ai detector tests directly without mentioning them. Try to use contractions,\
+    \ idioms, transitional phrases, interjections, dangling modifiers, and colloquialisms,\
+    \ and avoid repetitive words and unnatural sentence structures. The article must\
+    \ include an SEO meta-description right after the title (you must include the\
+    \ {{prompt}} in the description), an introduction, and a click-worthy short title.\
+    \ Also, use the seed keyword as the first H2. Always use a combination of paragraphs,\
+    \ lists, and tables for a better reader experience. Use fully detailed paragraphs\
+    \ that engage the reader. Write at least one section with the heading {{prompt}}.\
+    \ Write down at least six FAQs with answers and a conclusion. \n\nNote: Don't\
+    \ assign Numbers to Headings. Don't assign numbers to Questions. Don't write Q:\
+    \ before the question (faqs) Make sure the article is plagiarism-free. Don't forget\
+    \ to use a question mark (?) at the end of questions. Try not to change the original\
+    \ {{prompt}} while writing the title. Try to use \"{{prompt}}\" 2-3 times in the\
+    \ article. Try to include {{prompt}} in the headings as well. write content that\
+    \ can easily pass the AI detection tools test. Bold all the headings and sub-headings\
+    \ using Markdown formatting. \n\n### Constraits: MUST FOLLOW THESE INSTRUCTIONS\
+    \ IN THE ARTICLE:\n0. Use {{target_language}} strictly in your response. \n1.\
+    \ Make sure you are using the Focus Keyword in the SEO Title.\n2. Use The Focus\
+    \ Keyword inside the SEO Meta Description.\n3. Make Sure The Focus Keyword appears\
+    \ in the first 10% of the content.\n4. Make sure The Focus Keyword was found in\
+    \ the content\n5. Make sure Your content is 2000 words long.\n6. Must use The\
+    \ Focus Keyword in the subheading(s).\n7. Make sure the Keyword Density is 1.30\n\
+    8. Must Create At least one external link in the content.\n9. Must use a positive\
+    \ or a negative sentiment word in the Title.\n10. Must use a Power Keyword in\
+    \ the Title.\n11. Must use a Number in the Title. Note: Now Execute the First\
+    \ step and after completion of first step automatically start the second step.\
+    \ \n\n## Context\nUse the below information as context of the SEO article. ##\
+    \ Job Description: Fully SEO Optimized Article including FAQ's\n{{context}} \n\
+    \n"
+  prompt_type: simple
+  retriever_resource:
+    enabled: false
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: Keywords
+      required: true
+      variable: prompt
+  - select:
+      default: ''
+      label: Target Language
+      options:
+      - 中文
+      - English
+      - Português
+      required: true
+      variable: target_language
+  - paragraph:
+      default: ''
+      label: Context
+      required: true
+      variable: context
+version: 0.1.5

@@ -1,0 +1,966 @@
+app:
+  description: ''
+  icon: 📑
+  icon_background: '#EFF1F5'
+  mode: workflow
+  name: SEO Blog Generator
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: if-else
+      id: 1711529368293-1711540040432
+      source: '1711529368293'
+      sourceHandle: source
+      target: '1711540040432'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: variable-assigner
+        targetType: llm
+      id: 1711540519508-1711540331682
+      source: '1711540519508'
+      sourceHandle: source
+      target: '1711540331682'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: variable-assigner
+      id: 1711540280162-1711540519508
+      source: '1711540280162'
+      sourceHandle: source
+      target: '1711540519508'
+      targetHandle: '1711540280162'
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1711540755626-1711541242630
+      source: '1711540755626'
+      sourceHandle: source
+      target: '1711541242630'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1711541242630-1711541250877
+      source: '1711541242630'
+      sourceHandle: source
+      target: '1711541250877'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: template-transform
+      id: 1711541250877-1711541379111
+      source: '1711541250877'
+      sourceHandle: source
+      target: '1711541379111'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: template-transform
+        targetType: end
+      id: 1711541379111-1711541407063
+      source: '1711541379111'
+      sourceHandle: source
+      target: '1711541407063'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: llm
+      id: 1711540040432-1711540280162
+      source: '1711540040432'
+      sourceHandle: 'false'
+      target: '1711540280162'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: if-else
+        targetType: tool
+      id: 1711540040432-1712463427693
+      source: '1711540040432'
+      sourceHandle: 'true'
+      target: '1712463427693'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: tool
+        targetType: llm
+      id: 1712463427693-1711540113584
+      source: '1712463427693'
+      sourceHandle: source
+      target: '1711540113584'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: variable-assigner
+      id: 1711540113584-1711540519508
+      source: '1711540113584'
+      sourceHandle: source
+      target: '1711540519508'
+      targetHandle: '1711540113584'
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1711540331682-source-1711540755626-target
+      source: '1711540331682'
+      sourceHandle: source
+      target: '1711540755626'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Keyword
+          max_length: 33024
+          options: []
+          required: true
+          type: paragraph
+          variable: keyword
+        - label: 'Title '
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: title
+        - label: Audience
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: audience
+        - label: Brand to Avoid
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: brands_to_avoid
+        - label: Tone and Voice
+          max_length: null
+          options: []
+          required: true
+          type: text-input
+          variable: tone
+      dragging: false
+      height: 193
+      id: '1711529368293'
+      position:
+        x: 30
+        y: 296.5
+      positionAbsolute:
+        x: 30
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: empty
+            id: '1711540046932'
+            value: ''
+            variable_selector:
+            - '1711529368293'
+            - title
+          logical_operator: and
+        conditions:
+        - comparison_operator: empty
+          id: '1711540046932'
+          value: ''
+          variable_selector:
+          - '1711529368293'
+          - title
+        desc: ''
+        logical_operator: and
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      dragging: false
+      height: 125
+      id: '1711540040432'
+      position:
+        x: 334
+        y: 296.5
+      positionAbsolute:
+        x: 334
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Title Generation
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - id: 4915e80a-2e79-442f-b120-fd2e009ad884
+          role: system
+          text: You are an SEO expert and subject-matter expert. Your task is to generate
+            an SEO article title for the keyword provided by the user based on the
+            context of the Google Search.
+        - id: 50d16251-fdea-4bc5-9427-bbff35b41d6f
+          role: user
+          text: 'For context about what my article should be about, these are the
+            top ranking results for {{#1711529368293.keyword#}}: {{#1712463427693.text#}}
+
+            What are the principles that made these rank?
+
+
+            '
+        - id: 08fd1dcc-6e03-482c-96ae-390cd5399065
+          role: assistant
+          text: 'To craft an SEO-friendly article title for the keyword "{{#1711529368293.keyword#}}"
+            that aligns with the principles observed in the top-ranking results you''ve
+            shared, it''s important to understand what made those titles effective.
+            Here are the principles that likely contributed to their high rankings:
+
+
+
+            1. **Keyword Placement and Clarity**: Each title directly addresses the
+            query by including the exact keyword or a very close variant. This clarity
+            ensures search engines can easily understand the relevance of the content.
+
+            2. **Brevity and Directness**: The titles are concise, making them easy
+            to read and understand quickly. They avoid unnecessary words and get straight
+            to the point.
+
+            3. **Inclusion of Definitions or Explanations**: The titles suggest that
+            the article will define or explain the concept, which is precisely what
+            someone searching for "{{#1711529368293.keyword#}}" would be looking for.
+
+            4. **Variety in Presentation**: Despite covering similar content, each
+            title approaches the subject from a slightly different angle. This variety
+            can capture interest from a broader audience.
+
+            '
+        - id: 60dc7f43-9489-4c75-9cb5-81d23c44a1a5
+          role: user
+          text: 'Given these principles, please help me generate a title that will
+            rank for the keyword "{{#1711529368293.keyword#}}" by modeling after the
+            syntax of the top ranking titles. Don''t copy but give me something better,
+            and avoid language such as "Master", "Comprehensive" or "Discover" or
+            "Unveil". Do not use gerunds, and write in active, present voice only.
+            Return the title only. Do not include any special symbols such as quotation
+            mark and colons. '
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711529368293'
+          - keyword
+          variable: keyword
+        - value_selector:
+          - '1711540832602'
+          - text
+          variable: text
+        vision:
+          enabled: false
+      dragging: false
+      height: 125
+      id: '1711540113584'
+      position:
+        x: 930.6899321933752
+        y: 296.5
+      positionAbsolute:
+        x: 930.6899321933752
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 'Keyword generation '
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: 'I am researching for an article titled "{{#1711529368293.title#}}",
+            what associated, high traffic phrase would i type into Google to find
+            this article? Return just the phrase, do not include any special symbols
+            such as quotation mark and colons. '
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711529368293'
+          - title
+          variable: title
+        vision:
+          enabled: false
+      dragging: false
+      height: 125
+      id: '1711540280162'
+      position:
+        x: 791.1990959116691
+        y: 501.0237261697986
+      positionAbsolute:
+        x: 791.1990959116691
+        y: 501.0237261697986
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Search Query
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: openai
+        prompt_template:
+        - role: system
+          text: 'I want a Google search phrase that will get me authoritative information
+            for my article titled {{#1711529368293.title#}}{{#1711540280162.text#}},
+            aimed at {{#1711529368293.audience#}}. Please return a search phrase that
+            would give me good general overview of this topic five words or less.
+            Include any words your are not familiar with in the search query. Return
+            just the phrase, do not include any special symbols such as quotation
+            mark and colons. '
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711529368293'
+          - title
+          variable: title
+        - value_selector:
+          - '1711529368293'
+          - keyword
+          variable: keyword
+        - value_selector:
+          - '1711529368293'
+          - audience
+          variable: audience
+        vision:
+          enabled: false
+      dragging: false
+      height: 125
+      id: '1711540331682'
+      position:
+        x: 1550
+        y: 296.5
+      positionAbsolute:
+        x: 1550
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: Variable Assigner
+        type: variable-assigner
+        variables:
+        - - '1711540113584'
+          - text
+        - - '1711540280162'
+          - text
+      dragging: false
+      height: 130
+      id: '1711540519508'
+      position:
+        x: 1246
+        y: 296.5
+      positionAbsolute:
+        x: 1246
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Generate Outline
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 4096
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: e0eafce1-86b0-4e07-973f-eb8234f424cb
+          role: system
+          text: "You are an expert blog writer. \nHere is some research i have done\
+            \ for a blog post titled \"{{#1711529368293.title#}}\". Please study it\
+            \ deeply : \n\n{\nArticle Title : {{#1711529368293.title#}}\n\nTarget\
+            \ Keyword : {{#1711529368293.keyword#}}\n\nAudience for my blog post :\
+            \ {{#1711529368293.audience#}}\n\nExclude the brands : {{{#1711529368293.brands_to_avoid#}}\n\
+            Can you please write a detailed blog outline that has unique sections.\
+            \ The outline is supposed to include specific points and details that\
+            \ the article can mention. Avoid generic points. This should be deeply\
+            \ researched, not general.  \n\nInclude 7-8 bullets per section and, use\
+            \ some of the links above as references if you can. For each bullet, don't\
+            \ just say \"discuss how\", but actually explain in detail the points\
+            \ that can be made. Do not include things you know to be false, there\
+            \ may be inaccuracies. You are writing this for a sophisticated audience,\
+            \ avoid generic points, make specific references. Make sure to define\
+            \ key terms for users in the outline. Stay away from very controversial\
+            \ topics. In the introduction, give background information needed for\
+            \ the rest of the article. \n\nPlease return it in a basic array in the\
+            \ format and ONLY return the outline array, escaping quotes in format.\
+            \ Include a full section in each array item. : \n\n[\"section 1 including\
+            \ all sub-bullets\",\"section 2 including all sub-bullets\",\"section\
+            \ 3 including all sub-bullets\",\"section 4  including all sub-bullets\"\
+            ... etc\n\nEach section should be encapsulated with \"\" and all content\
+            \ within should be escaped to ensure it is a valid array item\n\nHere\
+            \ an example of a valid output. Please follow this structure, ignore the\
+            \ content : \n\n[\n  \"Introduction - Discover the vibrant city of Miami,\
+            \ a destination that offers a blend of rich history, diverse culture,\
+            \ and a plethora of hidden gems. Unearth the lesser-known marvels that\
+            \ make Miami a unique destination for adventure seekers. Explore the numerous\
+            \ attractions from historic landmarks to eclectic neighborhoods, local\
+            \ cuisines, and vibrant nightlife.\",\n  \"History of Miami - Begin the\
+            \ adventure with a journey into Miami's past. Learn about the city's transformation\
+            \ from a sleepy settlement to a bustling metropolis. Understand the influence\
+            \ of diverse cultures on the city's development, as evident in its architecture,\
+            \ cuisine, and lifestyle. Discover the historical significance of Miami's\
+            \ landmarks such as the Ernest Hemingway's Home. Uncover the intriguing\
+            \ stories behind Miami's famous neighborhoods like Key West. Explore the\
+            \ role of art and culture in shaping Miami, as illustrated by the Art\
+            \ Basel event.\",\n  \"Top Attractions - Venture beyond Miami's famous\
+            \ beaches and explore the city's top attractions. Discover the artistic\
+            \ brilliance of the Wynwood Art District, known for its vibrant street\
+            \ art. Visit the iconic South Beach, famous for its nightlife and boutique\
+            \ shops. Explore the enchanting neighborhood of Coconut Grove, known for\
+            \ its tree-lined streets and shopping areas. Visit the Holocaust Memorial,\
+            \ a grim reminder of a dark chapter in human history. Explore the diverse\
+            \ wildlife at the Everglades National Park, one of Miami's natural treasures.\"\
+            ,\n  \"Off the Beaten Path - Step away from the tourist trail and discover\
+            \ Miami's hidden gems. Experience the thrill of a water taxi ride across\
+            \ Biscayne Bay for an alternative view of the city. Visit the lesser-known\
+            \ Art Kabinett sector, featuring unique installation art. Explore the\
+            \ abandoned bridges and hidden bars on Duval Street. Take a culinary adventure\
+            \ in the local neighborhoods, known for their authentic cuisines. Indulge\
+            \ in a shopping spree at the Brickell City Centre, a trendy shopping and\
+            \ condo complex in downtown Miami.\",\n  \"Local Cuisine - Dive into Miami's\
+            \ culinary scene and savor the city's diverse flavors. Enjoy the ultra-fresh\
+            \ food and drinks at Bartaco, a local favorite. Experience fine dining\
+            \ at upscale Italian restaurants like Il Mulino New York. Explore the\
+            \ city's local food markets for a taste of Miami's homegrown produce.\
+            \ Sample the unique fusion of Cuban and American cuisines, a testament\
+            \ to Miami's multicultural heritage.\",\n  \"Nightlife - Experience the\
+            \ city's vibrant nightlife, a perfect blend of sophistication and fun.\
+            \ Visit the American Social Bar & Kitchen, a hotspot for sports lovers.\
+            \ Explore the nightlife in Mary Brickell Village, known for its clubby\
+            \ atmosphere. Enjoy an evening at the Smith & Wollensky Miami Beach South\
+            \ Pointe Park, known for its stunning views and vintage wines. Visit the\
+            \ iconic Miami Beach, famous for its pulsating nightlife.\",\n  \"Conclusion\
+            \ - Miami is more than just stunning beaches and glitzy nightlife. It's\
+            \ a treasure trove of experiences waiting to be discovered. From its rich\
+            \ history and diverse culture to its hidden gems, local cuisine, and vibrant\
+            \ nightlife, Miami offers a unique adventure for every traveler. Experience\
+            \ the magic of Miami Beach and create unforgettable memories with your\
+            \ family.\"\n]\n"
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711540113584'
+          - text
+          variable: title
+        - value_selector:
+          - '1711540280162'
+          - text
+          variable: keyword
+        - value_selector:
+          - '1711540065496'
+          - text
+          variable: google2
+        - value_selector:
+          - '1711529368293'
+          - audience
+          variable: audience
+        - value_selector:
+          - '1711529368293'
+          - brands_to_avoid
+          variable: brands_to_avoid
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 125
+      id: '1711540755626'
+      position:
+        x: 1854
+        y: 296.5
+      positionAbsolute:
+        x: 1854
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Write Intro
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 512
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 0d6d2409-b50d-479a-a462-0ec16f612d7d
+          role: system
+          text: "You are an SEO expert who writes in an straightforward, practical,\
+            \ educational tone that is matter-of-fact instead of a storytelling or\
+            \ narrative style, focused on informing the \"how to\", \"what is\", and\
+            \ \"why\" rather than narrating to the audience {{#1711529368293.audience#}}.\
+            \ Write at a 6th grade reading level. Output in markdown only.\n\nUse\
+            \ the following tone and voice:\n{{#1711529368293.tone#}}\nUse active,\
+            \ present tense, and avoid complex language and syntax such as \"unravel\"\
+            , \"delve\", etc. without narration.\n\nNow, excluding the title, introduce\
+            \ the blog in 3-5 sentences. Then, use an h2 header to write the the section\
+            \ title. Then provide a concise, SEO-optimized title. Do not include h3\
+            \ subheaders. Feel free to use bullets, numbered lists, or paragraphs,\
+            \ or bold text for emphasis when you see fit. You should transition naturally\
+            \ from each section, build off of each section, and you should not repeat\
+            \ the same sentence structure. Do not include a conclusion, sum up or\
+            \ summary, no \"in conclusion\", \"to conclude\" or variations. Do not\
+            \ include links or mention any company that are competitive with the brand\
+            \ (avoid \"{{#1711529368293.brands_to_avoid#}}\"). \n<Article Outline>\n\
+            {{#1711540755626.text#}}\n<Introduction>"
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711529368293'
+          - audience
+          variable: audience
+        - value_selector:
+          - '1711529368293'
+          - tone
+          variable: tone
+        - value_selector:
+          - '1711540755626'
+          - text
+          variable: text
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 125
+      id: '1711541242630'
+      position:
+        x: 2158
+        y: 296.5
+      positionAbsolute:
+        x: 2158
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Write Body
+        model:
+          completion_params:
+            frequency_penalty: 0
+            max_tokens: 4096
+            presence_penalty: 0
+            temperature: 0.7
+            top_p: 1
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: 09b3adcb-665f-4cf3-87c8-44ab7a503310
+          role: system
+          text: "You are an SEO expert who writes in an straightforward, practical,\
+            \ educational tone that is matter-of-fact instead of a storytelling or\
+            \ narrative style, focused on informing the \"how to\", \"what is\", and\
+            \ \"why\" rather than narrating to the audience {{#1711529368293.audience#}}.\
+            \ Write at a 6th grade reading level. Output in markdown only.\n\n\nUse\
+            \ the following tone and voice:\n{{#1711529368293.tone#}}\nUse active,\
+            \ present tense, and avoid complex language and syntax such as \"unravel\"\
+            , \"delve\", etc. without narration.\n\nNow continue writing this article\
+            \ with an concise title relating to our topic, {{#1711529368293.title#}}{{#1711529368293.keyword#}}.\
+            \ Do not repeat anything already written, and do not repeat the same sentence\
+            \ structure. Exclude a conclusion.Use the information I have given you\
+            \ to write something deeply interesting and original. Add references and\
+            \ data points I have provided you with above to make the article more\
+            \ valuable to the reader. \n\n<Article Outline>\n{{#1711540755626.text#}}\n\
+            <Article Body>"
+        selected: false
+        title: LLM
+        type: llm
+        variables:
+        - value_selector:
+          - '1711529368293'
+          - audience
+          variable: audience
+        - value_selector:
+          - '1711529368293'
+          - tone
+          variable: tone
+        - value_selector:
+          - '1711540755626'
+          - text
+          variable: outline
+        - value_selector:
+          - '1711529368293'
+          - title
+          variable: title
+        - value_selector:
+          - '1711540113584'
+          - text
+          variable: text2
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      dragging: false
+      height: 125
+      id: '1711541250877'
+      position:
+        x: 2462
+        y: 296.5
+      positionAbsolute:
+        x: 2462
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "{{ intro }}\r\n{{ body }}"
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1711541242630'
+          - text
+          variable: intro
+        - value_selector:
+          - '1711541250877'
+          - text
+          variable: body
+      dragging: false
+      height: 53
+      id: '1711541379111'
+      position:
+        x: 2766
+        y: 296.5
+      positionAbsolute:
+        x: 2766
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1711541379111'
+          - output
+          variable: output
+        selected: false
+        title: End
+        type: end
+      dragging: false
+      height: 89
+      id: '1711541407063'
+      position:
+        x: 3070
+        y: 296.5
+      positionAbsolute:
+        x: 3070
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: 'Title Search '
+        provider_id: google
+        provider_name: google
+        provider_type: builtin
+        selected: false
+        title: GoogleSearch
+        tool_configurations:
+          result_type: link
+        tool_label: GoogleSearch
+        tool_name: google_search
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1711529368293.keyword#}}'
+        type: tool
+      height: 117
+      id: '1712463427693'
+      position:
+        x: 630.4599547955834
+        y: 296.5
+      positionAbsolute:
+        x: 630.4599547955834
+        y: 296.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 253
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Start
+          Node","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Function","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Collect user input for keyword, title, audience, words/brands to avoid,
+          and tone.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Variables","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":2},{"children":[{"children":[{"children":[{"detail":0,"format":16,"mode":"normal","style":"","text":"keyword","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Keyword","type":"text","version":1}],"direction":"ltr","format":"","indent":2,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":16,"mode":"normal","style":"","text":"title","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Title","type":"text","version":1}],"direction":"ltr","format":"","indent":2,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":16,"mode":"normal","style":"","text":"audience","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Audience","type":"text","version":1}],"direction":"ltr","format":"","indent":2,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":16,"mode":"normal","style":"","text":"brands_to_avoid","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Words/brands to avoid","type":"text","version":1}],"direction":"ltr","format":"","indent":2,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":16,"mode":"normal","style":"","text":"tone","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Tone","type":"text","version":1}],"direction":"ltr","format":"","indent":2,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":3}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":3}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"number","start":2,"tag":"ol"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 377
+      height: 253
+      id: '1718995081823'
+      position:
+        x: -48.24661632117039
+        y: 12.541780973193681
+      positionAbsolute:
+        x: -48.24661632117039
+        y: 12.541780973193681
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 377
+    - data:
+        author: Dify
+        desc: ''
+        height: 153
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"If-Else
+          Node","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Function","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Check if the title is empty.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Condition","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          If the title is empty, generate a title; otherwise, proceed with subsequent
+          operations.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":2}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":3}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"number","start":2,"tag":"ol"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 371
+      height: 153
+      id: '1718995101826'
+      position:
+        x: 284.6105265359725
+        y: 572.5417809731937
+      positionAbsolute:
+        x: 284.6105265359725
+        y: 572.5417809731937
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 371
+    - data:
+        author: Dify
+        desc: ''
+        height: 458
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":3,"mode":"normal","style":"font-size:
+          16px;","text":"Detailed Process","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"paragraph","version":1,"textFormat":3},{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"User
+          Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":15},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"User
+          inputs keyword, title, audience, words/brands to avoid, and tone in the
+          start node.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":16},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Condition
+          Check","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":16},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Check
+          if the title is empty; if empty, generate a title.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":17},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Generate
+          Title and Keywords","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":17},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Generate
+          an SEO-optimized title and related keywords based on the user''s keyword
+          input.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":18},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Google
+          Search","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":18},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Perform
+          Google searches using the generated title and keywords to gather relevant
+          information.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":19},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Generate
+          Outline and Article","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":19},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Generate
+          an article outline, introduction, and main body based on user input and
+          search results.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":20},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Template
+          Transform and Output","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":20},{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Merge
+          the introduction and main body to generate a complete article and output
+          the result.","type":"text","version":1}],"direction":"ltr","format":"","indent":1,"type":"listitem","version":1,"value":1}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"start","indent":0,"type":"listitem","version":1,"value":21}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"number","start":15,"tag":"ol"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 568
+      height: 458
+      id: '1718995132869'
+      position:
+        x: 1270.3248122502582
+        y: 555.3989238303365
+      positionAbsolute:
+        x: 1270.3248122502582
+        y: 555.3989238303365
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 568
+    - data:
+        author: Dify
+        desc: ''
+        height: 137
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          Google Search node requires configuring a third-party API key at ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"Serp
+          ","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"to
+          be used. Using the ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"Google
+          Search tool","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          to gather relevant information ensures that the generated content is accurate
+          and rich.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 520
+      height: 137
+      id: '1718995154566'
+      position:
+        x: 607.9086930087312
+        y: 108.32539531053018
+      positionAbsolute:
+        x: 607.9086930087312
+        y: 108.32539531053018
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 520
+    viewport:
+      x: 141.31647780303342
+      y: 94.4168452103177
+      zoom: 0.6597539553864475
